@@ -12,11 +12,11 @@ const PaymentMethods: React.FC = () => {
   const { t } = useTranslation();
 
   return (
-    <section id="payment" className="py-16 bg-white">
+    <section className="py-16 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">{t('payment.title')}</h2>
-          <p className="mt-4 text-lg text-gray-600">{t('payment.subtitle')}</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">{t('payment.title')}</h2>
+          <p className="mt-4 text-lg text-muted-foreground">{t('payment.subtitle')}</p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -37,7 +37,7 @@ const PaymentMethods: React.FC = () => {
                 </div>
                 <div className="mt-4 text-center">
                   <p className="font-medium">eSewa ID: 9876543210</p>
-                  <p className="text-sm text-gray-600">{t('payment.instructions')}</p>
+                  <p className="text-sm text-muted-foreground">{t('payment.instructions')}</p>
                 </div>
               </div>
             </CardContent>
@@ -60,7 +60,7 @@ const PaymentMethods: React.FC = () => {
                 </div>
                 <div className="mt-4 text-center">
                   <p className="font-medium">PhonePay ID: 9876543210</p>
-                  <p className="text-sm text-gray-600">{t('payment.instructions')}</p>
+                  <p className="text-sm text-muted-foreground">{t('payment.instructions')}</p>
                 </div>
               </div>
             </CardContent>

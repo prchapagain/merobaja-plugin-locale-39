@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useTranslation } from '@/utils/i18n';
 
 const Footer: React.FC = () => {
@@ -21,24 +22,29 @@ const Footer: React.FC = () => {
             <h3 className="text-xl font-bold mb-4">Links</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <Link to="/" className="text-gray-300 hover:text-white transition-colors">
                   {t('nav.home')}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#plugins" className="text-gray-300 hover:text-white transition-colors">
+                <Link to="/#plugins" className="text-gray-300 hover:text-white transition-colors">
                   {t('nav.plugins')}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <Link to="/#testimonials" className="text-gray-300 hover:text-white transition-colors">
+                  {t('testimonials.title')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/about" className="text-gray-300 hover:text-white transition-colors">
                   {t('nav.about')}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                  {t('nav.contact')}
-                </a>
+                <Link to="/#payment" className="text-gray-300 hover:text-white transition-colors">
+                  {t('payment.title')}
+                </Link>
               </li>
             </ul>
           </div>

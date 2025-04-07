@@ -3,10 +3,17 @@ import { Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/utils/theme";
 import { useTranslation } from "@/utils/i18n";
+import { useEffect } from "react";
 
 const ThemeToggle = () => {
   const { theme, setTheme } = useTheme();
   const { t } = useTranslation();
+  
+  // Apply theme class to document on mount and when theme changes
+  useEffect(() => {
+    document.documentElement.classList.remove("light", "dark");
+    document.documentElement.classList.add(theme);
+  }, [theme]);
   
   return (
     <Button

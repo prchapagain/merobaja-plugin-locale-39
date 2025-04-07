@@ -15,6 +15,10 @@ const Navbar: React.FC = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
@@ -53,6 +57,12 @@ const Navbar: React.FC = () => {
           <Link to="/#plugins" className="text-sm font-medium hover:text-primary">
             {t('nav.plugins')}
           </Link>
+          <Link to="/#testimonials" className="text-sm font-medium hover:text-primary">
+            {t('testimonials.title')}
+          </Link>
+          <Link to="/#payment" className="text-sm font-medium hover:text-primary">
+            {t('payment.title')}
+          </Link>
           <Link to="/about" className="text-sm font-medium hover:text-primary">
             {t('nav.about')}
           </Link>
@@ -82,21 +92,35 @@ const Navbar: React.FC = () => {
             <Link 
               to="/" 
               className="text-sm font-medium hover:text-primary"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={closeMenu}
             >
               {t('nav.home')}
             </Link>
             <Link 
               to="/#plugins" 
               className="text-sm font-medium hover:text-primary"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={closeMenu}
             >
               {t('nav.plugins')}
             </Link>
             <Link 
+              to="/#testimonials" 
+              className="text-sm font-medium hover:text-primary"
+              onClick={closeMenu}
+            >
+              {t('testimonials.title')}
+            </Link>
+            <Link 
+              to="/#payment" 
+              className="text-sm font-medium hover:text-primary"
+              onClick={closeMenu}
+            >
+              {t('payment.title')}
+            </Link>
+            <Link 
               to="/about" 
               className="text-sm font-medium hover:text-primary"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={closeMenu}
             >
               {t('nav.about')}
             </Link>
