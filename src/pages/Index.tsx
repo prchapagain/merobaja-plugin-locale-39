@@ -11,7 +11,9 @@ const Index = () => {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <Hero />
-      <PluginGrid />
+      <div id="plugins">
+        <PluginGrid />
+      </div>
       <PaymentMethods />
       <Footer />
     </div>

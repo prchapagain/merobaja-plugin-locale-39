@@ -13,10 +13,10 @@ const LanguageSwitcher: React.FC = () => {
 
   return (
     <Button
-      variant="ghost"
+      variant="outline"
       size="sm"
       onClick={toggleLanguage}
-      className="flex items-center gap-2"
+      className="flex items-center gap-2 border-nepali-gold hover:bg-nepali-gold/10"
     >
       <Globe className="h-4 w-4" />
       <span>{language === 'en' ? 'नेपाली' : 'English'}</span>

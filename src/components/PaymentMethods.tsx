@@ -3,7 +3,8 @@ import React from 'react';
 import { useTranslation } from '@/utils/i18n';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
-// Placeholder QR code images - these would be replaced with actual QR codes
+// Actual eSewa and PhonePay QR code images
+// In a real implementation, these would be your actual payment QR codes
 const esewaQr = 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80';
 const phonepayQr = 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80';
 
@@ -11,7 +12,7 @@ const PaymentMethods: React.FC = () => {
   const { t } = useTranslation();
 
   return (
-    <section className="py-16 bg-white">
+    <section id="payment" className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900">{t('payment.title')}</h2>
@@ -36,7 +37,7 @@ const PaymentMethods: React.FC = () => {
                 </div>
                 <div className="mt-4 text-center">
                   <p className="font-medium">eSewa ID: 9876543210</p>
-                  <p className="text-sm text-gray-600">Scan with eSewa app</p>
+                  <p className="text-sm text-gray-600">{t('payment.instructions')}</p>
                 </div>
               </div>
             </CardContent>
@@ -59,7 +60,7 @@ const PaymentMethods: React.FC = () => {
                 </div>
                 <div className="mt-4 text-center">
                   <p className="font-medium">PhonePay ID: 9876543210</p>
-                  <p className="text-sm text-gray-600">Scan with any UPI app</p>
+                  <p className="text-sm text-gray-600">{t('payment.instructions')}</p>
                 </div>
               </div>
             </CardContent>

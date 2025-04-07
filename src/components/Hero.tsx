@@ -2,6 +2,7 @@
 import React from 'react';
 import { useTranslation } from '@/utils/i18n';
 import { Button } from '@/components/ui/button';
+import { ChevronDown } from 'lucide-react';
 
 const Hero: React.FC = () => {
   const { t } = useTranslation();
@@ -13,10 +14,10 @@ const Hero: React.FC = () => {
         <h1 className="text-4xl md:text-6xl font-bold tracking-tight animate-fade-in">
           {t('hero.title')}
         </h1>
-        <p className="mt-6 max-w-lg mx-auto text-xl md:text-2xl animate-slide-up">
+        <p className="mt-6 max-w-2xl mx-auto text-xl md:text-2xl animate-slide-up">
           {t('hero.subtitle')}
         </p>
-        <div className="mt-10">
+        <div className="mt-10 flex gap-4">
           <Button 
             size="lg" 
             className="bg-nepali-gold hover:bg-nepali-gold/90 text-black font-semibold animate-slide-up"
@@ -24,6 +25,10 @@ const Hero: React.FC = () => {
           >
             {t('hero.cta')}
           </Button>
+        </div>
+        
+        <div className="absolute bottom-8 animate-bounce">
+          <ChevronDown className="h-8 w-8" />
         </div>
       </div>
     </div>
