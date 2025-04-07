@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from '@/components/ui/button';
 import { useTranslation } from '@/utils/i18n';
 import { Download, ShoppingCart } from 'lucide-react';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 export interface Plugin {
   id: number;
@@ -55,9 +56,48 @@ const PluginCard: React.FC<PluginCardProps> = ({ plugin }) => {
             <Download className="mr-2 h-4 w-4" /> {t('plugin.download')}
           </Button>
         ) : (
-          <Button className="w-full bg-nepali-red hover:bg-nepali-red/90">
-            <ShoppingCart className="mr-2 h-4 w-4" /> {t('plugin.buy')}
-          </Button>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button className="w-full bg-nepali-red hover:bg-nepali-red/90">
+                <ShoppingCart className="mr-2 h-4 w-4" /> {t('plugin.buy')}
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-md">
+              <DialogHeader>
+                <DialogTitle>{t('payment.title')}</DialogTitle>
+                <DialogDescription>
+                  {t('payment.choose')}
+                </DialogDescription>
+              </DialogHeader>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-4">
+                {/* eSewa Payment Option */}
+                <div className="flex flex-col items-center p-4 border rounded-lg hover:bg-[#60BB46]/10 cursor-pointer transition-colors">
+                  <div className="w-20 h-20 border-2 border-[#60BB46] p-2 rounded-lg mb-2">
+                    <img 
+                      src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
+                      alt="eSewa QR Code" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <p className="font-bold text-[#60BB46]">{t('payment.esewa')}</p>
+                  <p className="text-xs text-center mt-1">{t('payment.scan')}</p>
+                </div>
+                
+                {/* PhonePay QR */}
+                <div className="flex flex-col items-center p-4 border rounded-lg hover:bg-[#5F259F]/10 cursor-pointer transition-colors">
+                  <div className="w-20 h-20 border-2 border-[#5F259F] p-2 rounded-lg mb-2">
+                    <img 
+                      src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
+                      alt="PhonePay QR Code" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <p className="font-bold text-[#5F259F]">{t('payment.phonepay')}</p>
+                  <p className="text-xs text-center mt-1">{t('payment.scan')}</p>
+                </div>
+              </div>
+            </DialogContent>
+          </Dialog>
         )}
       </CardFooter>
     </Card>

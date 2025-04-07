@@ -33,6 +33,25 @@ const translations = {
     "payment.phonepay": "Pay with PhonePay QR",
     "payment.scan": "Scan QR Code",
     "payment.instructions": "Scan the QR code with your app to complete payment",
+    "payment.choose": "Choose your payment method",
+    
+    // About
+    "about.title": "About Us",
+    "about.subtitle": "Dedicated to Nepali Music Production",
+    "about.mission.title": "Our Mission",
+    "about.mission.description": "To empower Nepali musicians and producers with high-quality tools that celebrate our musical heritage.",
+    "about.story.title": "Our Story",
+    "about.story.description": "Started by a group of passionate musicians and developers in Kathmandu, we aim to bridge traditional Nepali music with modern production techniques.",
+    "about.team.title": "Our Team",
+    "about.team.description": "A diverse group of musicians, sound designers, and developers working together to create authentic Nepali VST plugins.",
+    
+    // Testimonials
+    "testimonials.title": "What Musicians Say",
+    "testimonials.subtitle": "Hear from producers and artists using our plugins",
+    
+    // Theme
+    "theme.dark": "Dark Mode",
+    "theme.light": "Light Mode",
     
     // Footer
     "footer.rights": "All Rights Reserved",
@@ -73,6 +92,25 @@ const translations = {
     "payment.phonepay": "फोन पे QR मार्फत भुक्तानी गर्नुहोस्",
     "payment.scan": "QR कोड स्क्यान गर्नुहोस्",
     "payment.instructions": "भुक्तानी पूरा गर्न तपाईंको एपबाट QR कोड स्क्यान गर्नुहोस्",
+    "payment.choose": "आफ्नो भुक्तानी विधि छनौट गर्नुहोस्",
+    
+    // About
+    "about.title": "हाम्रो बारेमा",
+    "about.subtitle": "नेपाली संगीत उत्पादनमा समर्पित",
+    "about.mission.title": "हाम्रो मिशन",
+    "about.mission.description": "नेपाली संगीतकार र निर्माताहरूलाई हाम्रो संगीत सम्पदाको सम्मान गर्ने उच्च गुणस्तरका उपकरणहरूको साथ सशक्त बनाउने।",
+    "about.story.title": "हाम्रो कथा",
+    "about.story.description": "काठमाडौंमा एक समूह जोशिला संगीतकारहरू र डेभलपरहरूद्वारा शुरू गरिएको, हामी परम्परागत नेपाली संगीतलाई आधुनिक उत्पादन प्रविधिहरूसँग जोड्न चाहन्छौं।",
+    "about.team.title": "हाम्रो टीम",
+    "about.team.description": "प्रामाणिक नेपाली VST प्लगइनहरू सिर्जना गर्न संगीतकार, ध्वनि डिजाइनर र डेभलपरहरूको विविध समूह सँगै काम गर्दै।",
+    
+    // Testimonials
+    "testimonials.title": "संगीतकारहरू के भन्छन्",
+    "testimonials.subtitle": "हाम्रो प्लगइनहरू प्रयोग गर्ने निर्माता र कलाकारहरूबाट सुन्नुहोस्",
+    
+    // Theme
+    "theme.dark": "डार्क मोड",
+    "theme.light": "लाइट मोड",
     
     // Footer
     "footer.rights": "सर्वाधिकार सुरक्षित",
