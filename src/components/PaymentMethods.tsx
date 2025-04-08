@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Check, Download, ArrowRight } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
-import { Facebook, Telegram, Phone } from 'lucide-react';
+import { Facebook, MessageSquare, Phone } from 'lucide-react';
 
 const PaymentMethods: React.FC = () => {
   const { t } = useTranslation();
@@ -68,7 +68,7 @@ const PaymentMethods: React.FC = () => {
               <Facebook className="h-5 w-5" />
             </a>
             <a href="https://t.me/+9779846920259" target="_blank" rel="noopener noreferrer" className="p-2 bg-blue-400 rounded-full text-white hover:bg-blue-500 transition-colors">
-              <Telegram className="h-5 w-5" />
+              <MessageSquare className="h-5 w-5" />
             </a>
           </div>
         </div>
@@ -252,7 +252,7 @@ const PaymentMethods: React.FC = () => {
                       <Facebook className="h-5 w-5" />
                     </a>
                     <a href="https://t.me/+9779846920259" target="_blank" rel="noopener noreferrer" className="p-2 bg-blue-400 rounded-full text-white hover:bg-blue-500 transition-colors">
-                      <Telegram className="h-5 w-5" />
+                      <MessageSquare className="h-5 w-5" />
                     </a>
                   </div>
                 </div>
