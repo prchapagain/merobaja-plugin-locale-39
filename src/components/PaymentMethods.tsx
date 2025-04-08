@@ -9,7 +9,7 @@ const PaymentMethods: React.FC = () => {
   const { t } = useTranslation();
 
   return (
-    <section className="py-16 bg-background">
+    <section id="pricing" className="py-16 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">Pricing Plans</h2>
