@@ -8,49 +8,69 @@ import { useToast } from "@/hooks/use-toast";
 import { Facebook, MessageSquare, Phone } from 'lucide-react';
 
 const Hero: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
   const { toast } = useToast();
 
   const handlePaymentSuccess = () => {
     toast({
-      title: "Payment Successful",
-      description: "Please contact us on WhatsApp for download instructions.",
+      title: language === 'en' ? "Payment Successful" : "भुक्तानी सफल भयो",
+      description: language === 'en' ? 
+        "Please contact us on WhatsApp for download instructions." : 
+        "डाउनलोड निर्देशनहरूको लागि कृपया हामीलाई व्हाट्सएपमा सम्पर्क गर्नुहोस्।",
     });
   };
 
   return (
-    <div className="relative bg-nepali-red text-white animate-fade-in">
-      <div className="absolute inset-0 bg-gradient-to-r from-nepali-red/95 to-nepali-red/90 bg-cover bg-center" />
+    <div className="relative bg-nepali-red text-white animate-fade-in dark:bg-gray-900">
+      <div className="absolute inset-0 bg-gradient-to-r from-nepali-red/95 to-nepali-red/90 bg-cover bg-center dark:from-gray-900/95 dark:to-gray-800/90" />
       <div className="relative max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
         <div className="flex flex-col items-start text-left mb-8">
-          <span className="text-sm font-medium bg-white/20 px-3 py-1 rounded-full mb-2 animate-fade-in">#1 Nepali VST Collection</span>
+          <span className="text-sm font-medium bg-white/20 px-3 py-1 rounded-full mb-2 animate-fade-in dark:bg-white/10">#1 Nepali VST Collection</span>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight animate-fade-in" style={{ animationDelay: '200ms' }}>
-            Authentic Nepali<br />Sound Library
+            {language === 'en' ? 'Authentic Nepali' : 'प्रामाणिक नेपाली'}<br />{language === 'en' ? 'Sound Library' : 'ध्वनि संग्रह'}
           </h1>
           <p className="mt-6 max-w-2xl text-lg animate-fade-in" style={{ animationDelay: '400ms' }}>
-            Discover premium VST plugins featuring authentic Nepali instruments, including Madal, Harmonium, Santoor, Sarangi, Bamboo Flute, and more.
+            {language === 'en' 
+              ? 'Discover premium VST plugins featuring authentic Nepali instruments, including Madal, Harmonium, Santoor, Sarangi, Bamboo Flute, and more.'
+              : 'मदल, हार्मोनियम, संतूर, सारंगी, बाँसुरी, र अन्य प्रामाणिक नेपाली वाद्ययन्त्रहरू समावेश गरिएको प्रिमियम VST प्लगइनहरू पत्ता लगाउनुहोस्।'}
           </p>
+          
+          {/* Social Media Icons - Centered */}
+          <div className="mt-6 flex justify-center gap-6 w-full animate-fade-in" style={{ animationDelay: '1000ms' }}>
+            <a href="https://wa.me/9779846920259" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/10 rounded-full hover:bg-white/20 transition-colors flex flex-col items-center">
+              <Phone className="h-6 w-6 mb-1" />
+              <span className="text-xs">{t('contact.whatsapp')}</span>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/10 rounded-full hover:bg-white/20 transition-colors flex flex-col items-center">
+              <Facebook className="h-6 w-6 mb-1" />
+              <span className="text-xs">{t('contact.facebook')}</span>
+            </a>
+            <a href="https://t.me/+9779846920259" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/10 rounded-full hover:bg-white/20 transition-colors flex flex-col items-center">
+              <MessageSquare className="h-6 w-6 mb-1" />
+              <span className="text-xs">{t('contact.telegram')}</span>
+            </a>
+          </div>
           
           <div className="mt-8 flex flex-wrap gap-4 animate-fade-in" style={{ animationDelay: '600ms' }}>
             <Dialog>
               <DialogTrigger asChild>
                 <Button 
                   size="lg" 
-                  className="bg-white hover:bg-white/90 text-nepali-red font-semibold flex gap-2 items-center"
+                  className="bg-white hover:bg-white/90 text-nepali-red font-semibold flex gap-2 items-center dark:bg-gray-200 dark:text-gray-800"
                 >
-                  <Download className="h-5 w-5" /> Download Now
+                  <Download className="h-5 w-5" /> {t('hero.download')}
                 </Button>
               </DialogTrigger>
-              <DialogContent className="sm:max-w-md">
+              <DialogContent className="sm:max-w-md dark:bg-gray-800 dark:border-gray-700">
                 <DialogHeader>
-                  <DialogTitle>Payment Methods</DialogTitle>
+                  <DialogTitle>{t('payment.title')}</DialogTitle>
                   <DialogDescription>
-                    Select a payment method to complete your download
+                    {t('payment.choose')}
                   </DialogDescription>
                 </DialogHeader>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-4">
                   {/* eSewa Payment Option */}
-                  <div onClick={handlePaymentSuccess} className="flex flex-col items-center p-4 border rounded-lg hover:bg-[#60BB46]/10 cursor-pointer transition-colors">
+                  <div onClick={handlePaymentSuccess} className="flex flex-col items-center p-4 border rounded-lg hover:bg-[#60BB46]/10 cursor-pointer transition-colors dark:border-gray-700 dark:hover:bg-[#60BB46]/5">
                     <div className="w-32 h-32 border-2 border-[#60BB46] p-2 rounded-lg mb-2">
                       <img 
                         src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
@@ -58,12 +78,12 @@ const Hero: React.FC = () => {
                         className="w-full h-full object-cover"
                       />
                     </div>
-                    <p className="font-bold text-[#60BB46]">eSewa</p>
-                    <p className="text-xs text-center mt-1">Scan to pay with eSewa</p>
+                    <p className="font-bold text-[#60BB46]">{t('payment.esewa')}</p>
+                    <p className="text-xs text-center mt-1">{t('payment.scan')}</p>
                   </div>
                   
                   {/* PhonePay QR */}
-                  <div onClick={handlePaymentSuccess} className="flex flex-col items-center p-4 border rounded-lg hover:bg-[#5F259F]/10 cursor-pointer transition-colors">
+                  <div onClick={handlePaymentSuccess} className="flex flex-col items-center p-4 border rounded-lg hover:bg-[#5F259F]/10 cursor-pointer transition-colors dark:border-gray-700 dark:hover:bg-[#5F259F]/5">
                     <div className="w-32 h-32 border-2 border-[#5F259F] p-2 rounded-lg mb-2">
                       <img 
                         src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
@@ -71,12 +91,12 @@ const Hero: React.FC = () => {
                         className="w-full h-full object-cover"
                       />
                     </div>
-                    <p className="font-bold text-[#5F259F]">PhonePay</p>
-                    <p className="text-xs text-center mt-1">Scan to pay with PhonePay</p>
+                    <p className="font-bold text-[#5F259F]">{t('payment.phonepay')}</p>
+                    <p className="text-xs text-center mt-1">{t('payment.scan')}</p>
                   </div>
                 </div>
                 <div className="mt-4 flex flex-col items-center">
-                  <p className="text-sm text-center mb-3">After payment, contact us for download instructions</p>
+                  <p className="text-sm text-center mb-3">{t('payment.contactAfter')}</p>
                   <div className="flex gap-4 justify-center">
                     <a href="https://wa.me/9779846920259" target="_blank" rel="noopener noreferrer" className="p-2 bg-green-600 rounded-full text-white hover:bg-green-700 transition-colors">
                       <Phone className="h-5 w-5" />
@@ -94,48 +114,40 @@ const Hero: React.FC = () => {
             <Button 
               size="lg" 
               variant="outline" 
-              className="border-white text-white hover:bg-white/10 flex gap-2 items-center"
+              className="border-white text-white hover:bg-white/10 flex gap-2 items-center dark:border-gray-400"
             >
-              <Play className="h-5 w-5" /> Listen Demos
+              <Play className="h-5 w-5" /> {t('hero.tryDemo')}
             </Button>
           </div>
           
-          <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-6 md:gap-12 w-full animate-fade-in" style={{ animationDelay: '800ms' }}>
-            <div className="flex flex-col items-center">
-              <Users className="h-6 w-6 mb-2 opacity-80" />
-              <span className="text-2xl sm:text-3xl font-bold">5K+</span>
-              <span className="text-sm opacity-80">Users</span>
+          {/* User Rating Section - With Enhanced Visual */}
+          <div className="mt-12 w-full py-6 px-4 bg-white/10 rounded-xl dark:bg-gray-800/50">
+            <h3 className="text-xl font-semibold mb-4 text-center">{language === 'en' ? 'User Reviews & Stats' : 'प्रयोगकर्ता समीक्षा र तथ्याङ्कहरू'}</h3>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 md:gap-12 w-full animate-fade-in" style={{ animationDelay: '800ms' }}>
+              <div className="flex flex-col items-center p-3 bg-white/5 rounded-lg hover:bg-white/10 transition-all">
+                <Users className="h-6 w-6 mb-2 opacity-80" />
+                <span className="text-2xl sm:text-3xl font-bold">5K+</span>
+                <span className="text-sm opacity-80">{t('hero.stats.users')}</span>
+              </div>
+              
+              <div className="flex flex-col items-center p-3 bg-white/5 rounded-lg hover:bg-white/10 transition-all">
+                <Star className="h-6 w-6 mb-2 text-nepali-gold" />
+                <span className="text-2xl sm:text-3xl font-bold">4.9/5</span>
+                <span className="text-sm opacity-80">{t('hero.stats.rating')}</span>
+              </div>
+              
+              <div className="flex flex-col items-center p-3 bg-white/5 rounded-lg hover:bg-white/10 transition-all">
+                <DownloadIcon className="h-6 w-6 mb-2 opacity-80" />
+                <span className="text-2xl sm:text-3xl font-bold">10K+</span>
+                <span className="text-sm opacity-80">{t('hero.stats.downloads')}</span>
+              </div>
+              
+              <div className="flex flex-col items-center p-3 bg-white/5 rounded-lg hover:bg-white/10 transition-all">
+                <Headphones className="h-6 w-6 mb-2 opacity-80" />
+                <span className="text-2xl sm:text-3xl font-bold">24/7</span>
+                <span className="text-sm opacity-80">{t('hero.stats.support')}</span>
+              </div>
             </div>
-            
-            <div className="flex flex-col items-center">
-              <Star className="h-6 w-6 mb-2 opacity-80" />
-              <span className="text-2xl sm:text-3xl font-bold">4.9/5</span>
-              <span className="text-sm opacity-80">User Rating</span>
-            </div>
-            
-            <div className="flex flex-col items-center">
-              <DownloadIcon className="h-6 w-6 mb-2 opacity-80" />
-              <span className="text-2xl sm:text-3xl font-bold">10K+</span>
-              <span className="text-sm opacity-80">Downloads</span>
-            </div>
-            
-            <div className="flex flex-col items-center">
-              <Headphones className="h-6 w-6 mb-2 opacity-80" />
-              <span className="text-2xl sm:text-3xl font-bold">24/7</span>
-              <span className="text-sm opacity-80">Support</span>
-            </div>
-          </div>
-          
-          <div className="mt-8 flex gap-4 animate-fade-in" style={{ animationDelay: '1000ms' }}>
-            <a href="https://wa.me/9779846920259" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors">
-              <Phone className="h-5 w-5" />
-            </a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors">
-              <Facebook className="h-5 w-5" />
-            </a>
-            <a href="https://t.me/+9779846920259" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors">
-              <MessageSquare className="h-5 w-5" />
-            </a>
           </div>
         </div>
       </div>

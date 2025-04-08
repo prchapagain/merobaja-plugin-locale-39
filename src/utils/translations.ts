@@ -11,6 +11,13 @@ const translations = {
     "hero.title": "Nepali VST Plugins",
     "hero.subtitle": "High-quality VST plugins for music production with authentic Nepali instruments",
     "hero.cta": "Explore Plugins",
+    "hero.stats.users": "Users",
+    "hero.stats.rating": "User Rating",
+    "hero.stats.downloads": "Downloads",
+    "hero.stats.support": "Support",
+    "hero.download": "Download Now",
+    "hero.tryDemo": "Try Demo",
+    "hero.contact": "Contact us after payment for download instructions",
     
     // Plugins
     "plugins.title": "Featured Plugins",
@@ -25,6 +32,8 @@ const translations = {
     "plugin.price": "Price",
     "plugin.download": "Download",
     "plugin.buy": "Buy Now",
+    "plugin.thankYou": "Thank you for choosing our plugin!",
+    "plugin.contactUs": "Contact us to receive your download link.",
     
     // Payment
     "payment.title": "Payment Methods",
@@ -34,6 +43,40 @@ const translations = {
     "payment.scan": "Scan QR Code",
     "payment.instructions": "Scan the QR code with your app to complete payment",
     "payment.choose": "Choose your payment method",
+    "payment.success": "Payment Successful",
+    "payment.contactAfter": "After payment, contact us for download instructions",
+    
+    // Pricing
+    "pricing.title": "Pricing Plans",
+    "pricing.subtitle": "Choose Your Collection",
+    "pricing.flexible": "Flexible pricing options for musicians and producers.",
+    "pricing.starter.title": "Starter Plan",
+    "pricing.starter.price": "₹.1200 or $ 10",
+    "pricing.starter.period": "one-time",
+    "pricing.pro.title": "Professional",
+    "pricing.pro.price": "₹.6000 or $ 60",
+    "pricing.pro.period": "one-time",
+    "pricing.premium.title": "Premium",
+    "pricing.premium.price": "₹.10000 or $ 100",
+    "pricing.premium.period": "one-time",
+    "pricing.popular": "Most Popular",
+    "pricing.readyText": "Ready to Create?",
+    "pricing.readySubtext": "Download our VST plugins today and bring authentic Nepali sounds to your music.",
+    
+    // Features
+    "features.singleInstrument": "Single Essential Instrument",
+    "features.basicArticulations": "Basic Articulations",
+    "features.standardSupport": "Standard Support",
+    "features.freeUpdates": "Free Updates",
+    "features.fiveInstruments": "5 Instruments included",
+    "features.fullArticulations": "Full Articulations",
+    "features.prioritySupport": "Priority Support",
+    "features.additionalPresets": "Additional Presets",
+    "features.completeCollection": "Complete Collection",
+    "features.extendedArticulations": "Extended Articulations",
+    "features.24Support": "24/7 Support",
+    "features.lifetimeUpdates": "Lifetime Updates",
+    "features.customPresets": "Custom Presets",
     
     // About
     "about.title": "About Us",
@@ -58,6 +101,12 @@ const translations = {
     "footer.terms": "Terms & Conditions",
     "footer.privacy": "Privacy Policy",
     "footer.contact": "Contact Us",
+
+    // Contact
+    "contact.us": "Contact Us",
+    "contact.whatsapp": "WhatsApp",
+    "contact.facebook": "Facebook",
+    "contact.telegram": "Telegram",
   },
   ne: {
     // Navigation
@@ -70,6 +119,13 @@ const translations = {
     "hero.title": "नेपाली भीएसटी प्लगइनहरू",
     "hero.subtitle": "प्रामाणिक नेपाली वाद्ययन्त्रहरू सहित संगीत उत्पादनको लागि उच्च गुणस्तरका भीएसटी प्लगइनहरू",
     "hero.cta": "प्लगइनहरू हेर्नुहोस्",
+    "hero.stats.users": "प्रयोगकर्ताहरू",
+    "hero.stats.rating": "प्रयोगकर्ता रेटिङ",
+    "hero.stats.downloads": "डाउनलोडहरू",
+    "hero.stats.support": "समर्थन",
+    "hero.download": "अहिले डाउनलोड गर्नुहोस्",
+    "hero.tryDemo": "डेमो प्रयास गर्नुहोस्",
+    "hero.contact": "डाउनलोड निर्देशनको लागि भुक्तानी पछि हामीलाई सम्पर्क गर्नुहोस्",
     
     // Plugins
     "plugins.title": "विशेष प्लगइनहरू",
@@ -84,6 +140,8 @@ const translations = {
     "plugin.price": "मूल्य",
     "plugin.download": "डाउनलोड गर्नुहोस्",
     "plugin.buy": "किन्नुहोस्",
+    "plugin.thankYou": "हाम्रो प्लगइन चयन गर्नुभएकोमा धन्यवाद!",
+    "plugin.contactUs": "डाउनलोड लिंक प्राप्त गर्न हामीलाई सम्पर्क गर्नुहोस्।",
     
     // Payment
     "payment.title": "भुक्तानी विधिहरू",
@@ -93,6 +151,40 @@ const translations = {
     "payment.scan": "QR कोड स्क्यान गर्नुहोस्",
     "payment.instructions": "भुक्तानी पूरा गर्न तपाईंको एपबाट QR कोड स्क्यान गर्नुहोस्",
     "payment.choose": "आफ्नो भुक्तानी विधि छनौट गर्नुहोस्",
+    "payment.success": "भुक्तानी सफल भयो",
+    "payment.contactAfter": "भुक्तानी पछि, डाउनलोड निर्देशनहरूको लागि हामीलाई सम्पर्क गर्नुहोस्",
+    
+    // Pricing
+    "pricing.title": "मूल्य योजनाहरू",
+    "pricing.subtitle": "आफ्नो संग्रह चयन गर्नुहोस्",
+    "pricing.flexible": "संगीतकार र निर्माताहरूको लागि लचिलो मूल्य निर्धारण विकल्पहरू।",
+    "pricing.starter.title": "सुरुवात योजना",
+    "pricing.starter.price": "₹.1200 वा $ 10",
+    "pricing.starter.period": "एक-पटक",
+    "pricing.pro.title": "व्यावसायिक",
+    "pricing.pro.price": "₹.6000 वा $ 60",
+    "pricing.pro.period": "एक-पटक",
+    "pricing.premium.title": "प्रिमियम",
+    "pricing.premium.price": "₹.10000 वा $ 100",
+    "pricing.premium.period": "एक-पटक",
+    "pricing.popular": "सबैभन्दा लोकप्रिय",
+    "pricing.readyText": "सिर्जना गर्न तयार?",
+    "pricing.readySubtext": "आज नै हाम्रो VST प्लगइनहरू डाउनलोड गर्नुहोस् र आफ्नो संगीतमा प्रामाणिक नेपाली ध्वनिहरू ल्याउनुहोस्।",
+    
+    // Features
+    "features.singleInstrument": "एकल आवश्यक वाद्ययन्त्र",
+    "features.basicArticulations": "आधारभूत अर्टिकुलेसनहरू",
+    "features.standardSupport": "मानक समर्थन",
+    "features.freeUpdates": "नि:शुल्क अपडेटहरू",
+    "features.fiveInstruments": "5 वाद्ययन्त्रहरू समावेश",
+    "features.fullArticulations": "पूर्ण अर्टिकुलेसनहरू",
+    "features.prioritySupport": "प्राथमिकता समर्थन",
+    "features.additionalPresets": "अतिरिक्त प्रिसेटहरू",
+    "features.completeCollection": "पूर्ण संग्रह",
+    "features.extendedArticulations": "विस्तारित अर्टिकुलेसनहरू",
+    "features.24Support": "24/7 समर्थन",
+    "features.lifetimeUpdates": "जीवनभर अपडेटहरू",
+    "features.customPresets": "अनुकूलित प्रिसेटहरू",
     
     // About
     "about.title": "हाम्रो बारेमा",
@@ -117,6 +209,12 @@ const translations = {
     "footer.terms": "नियम तथा शर्तहरू",
     "footer.privacy": "गोपनीयता नीति",
     "footer.contact": "सम्पर्क गर्नुहोस्",
+
+    // Contact
+    "contact.us": "हामीलाई सम्पर्क गर्नुहोस्",
+    "contact.whatsapp": "व्हाट्सएप",
+    "contact.facebook": "फेसबुक",
+    "contact.telegram": "टेलिग्राम",
   },
 };
 
