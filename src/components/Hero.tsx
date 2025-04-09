@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useTranslation } from '@/utils/i18n';
 import { Button } from '@/components/ui/button';
@@ -17,7 +16,7 @@ const Hero: React.FC = () => {
       description: language === 'en' ? 
         "Contact us to receive your download link. Notice: Please send payment slip to our WhatsApp number." : 
         "डाउनलोड लिंक प्राप्त गर्न हामीलाई सम्पर्क गर्नुहोस्। सूचना: कृपया भुक्तानी स्लिप हाम्रो व्हाट्सएप नम्बरमा पठाउनुहोस्।",
-      variant: "default", // Changed from "success" to "default"
+      variant: "default",
     });
   };
 
@@ -36,7 +35,6 @@ const Hero: React.FC = () => {
               : 'मदल, हार्मोनियम, संतूर, सारंगी, बाँसुरी, र अन्य प्रामाणिक नेपाली वाद्ययन्त्रहरू समावेश गरिएको प्रिमियम VST प्लगइनहरू पत्ता लगाउनुहोस्।'}
           </p>
           
-          {/* Social Media Icons - Centered */}
           <div className="mt-8 flex justify-center gap-8 w-full animate-fade-in" style={{ animationDelay: '1000ms' }}>
             <a href="https://wa.me/9779846920259" target="_blank" rel="noopener noreferrer" className="p-4 bg-white/10 rounded-full hover:bg-white/20 transition-colors flex flex-col items-center hover:scale-105">
               <Phone className="h-7 w-7 mb-2" />
@@ -74,7 +72,6 @@ const Hero: React.FC = () => {
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-4">
-                  {/* eSewa Payment Option */}
                   <div onClick={handlePaymentSuccess} className="flex flex-col items-center p-4 border rounded-lg hover:bg-[#60BB46]/10 cursor-pointer transition-colors dark:border-gray-700 dark:hover:bg-[#60BB46]/5">
                     <div className="w-32 h-32 border-2 border-[#60BB46] p-2 rounded-lg mb-2">
                       <img 
@@ -87,7 +84,6 @@ const Hero: React.FC = () => {
                     <p className="text-xs text-center mt-1">{t('payment.scan')}</p>
                   </div>
                   
-                  {/* PhonePay QR */}
                   <div onClick={handlePaymentSuccess} className="flex flex-col items-center p-4 border rounded-lg hover:bg-[#5F259F]/10 cursor-pointer transition-colors dark:border-gray-700 dark:hover:bg-[#5F259F]/5">
                     <div className="w-32 h-32 border-2 border-[#5F259F] p-2 rounded-lg mb-2">
                       <img 
@@ -125,7 +121,6 @@ const Hero: React.FC = () => {
             </Button>
           </div>
           
-          {/* User Rating Section - With Enhanced Visual */}
           <div className="mt-12 w-full py-8 px-6 bg-white/15 rounded-2xl backdrop-blur-sm border border-white/20 shadow-lg dark:bg-gray-800/50 dark:border-gray-700/50">
             <h3 className="text-2xl font-bold mb-6 text-center">{language === 'en' ? 'User Reviews & Stats' : 'प्रयोगकर्ता समीक्षा र तथ्याङ्कहरू'}</h3>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 md:gap-12 w-full animate-fade-in" style={{ animationDelay: '800ms' }}>
