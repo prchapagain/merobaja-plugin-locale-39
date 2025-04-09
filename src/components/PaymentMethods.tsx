@@ -1,9 +1,8 @@
-
 import React from 'react';
 import { useTranslation } from '@/utils/i18n';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Check, Download, ArrowRight } from 'lucide-react';
+import { Check, Download, ArrowRight, CreditCard, BanknoteIcon } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
 import { Facebook, MessageSquare, Phone } from 'lucide-react';
@@ -31,35 +30,73 @@ const PaymentMethods: React.FC = () => {
           <DialogTitle>{language === 'en' ? "Complete Your Purchase" : "आफ्नो खरिद पूरा गर्नुहोस्"}</DialogTitle>
           <DialogDescription>
             {language === 'en' ? 
-              "Scan the QR code with your payment app" : 
-              "तपाइँको भुक्तानी एपमा QR कोड स्क्यान गर्नुहोस्"}
+              "Choose your preferred payment method" : 
+              "आफ्नो मनपर्ने भुक्तानी विधि चयन गर्नुहोस्"}
           </DialogDescription>
         </DialogHeader>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 py-4">
           {/* eSewa Payment Option */}
-          <div onClick={handlePaymentSuccess} className="flex flex-col items-center p-4 border rounded-lg hover:bg-[#60BB46]/10 cursor-pointer transition-colors dark:border-gray-700 dark:hover:bg-[#60BB46]/5">
-            <div className="w-32 h-32 border-2 border-[#60BB46] p-2 rounded-lg mb-2">
+          <div onClick={handlePaymentSuccess} className="flex flex-col items-center p-3 border rounded-lg hover:bg-[#60BB46]/10 cursor-pointer transition-colors dark:border-gray-700 dark:hover:bg-[#60BB46]/5">
+            <div className="w-16 h-16 border-2 border-[#60BB46] p-2 rounded-lg mb-2">
               <img 
                 src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
                 alt="eSewa QR Code" 
                 className="w-full h-full object-cover"
               />
             </div>
-            <p className="font-bold text-[#60BB46]">{t('payment.esewa')}</p>
-            <p className="text-xs text-center mt-1">{t('payment.scan')}</p>
+            <p className="font-bold text-[#60BB46] text-xs">{t('payment.esewa')}</p>
           </div>
           
           {/* PhonePay QR */}
-          <div onClick={handlePaymentSuccess} className="flex flex-col items-center p-4 border rounded-lg hover:bg-[#5F259F]/10 cursor-pointer transition-colors dark:border-gray-700 dark:hover:bg-[#5F259F]/5">
-            <div className="w-32 h-32 border-2 border-[#5F259F] p-2 rounded-lg mb-2">
+          <div onClick={handlePaymentSuccess} className="flex flex-col items-center p-3 border rounded-lg hover:bg-[#5F259F]/10 cursor-pointer transition-colors dark:border-gray-700 dark:hover:bg-[#5F259F]/5">
+            <div className="w-16 h-16 border-2 border-[#5F259F] p-2 rounded-lg mb-2">
               <img 
                 src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
                 alt="PhonePay QR Code" 
                 className="w-full h-full object-cover"
               />
             </div>
-            <p className="font-bold text-[#5F259F]">{t('payment.phonepay')}</p>
-            <p className="text-xs text-center mt-1">{t('payment.scan')}</p>
+            <p className="font-bold text-[#5F259F] text-xs">{t('payment.phonepay')}</p>
+          </div>
+          
+          {/* Khalti */}
+          <div onClick={handlePaymentSuccess} className="flex flex-col items-center p-3 border rounded-lg hover:bg-[#5C2D91]/10 cursor-pointer transition-colors dark:border-gray-700 dark:hover:bg-[#5C2D91]/5">
+            <div className="w-16 h-16 border-2 border-[#5C2D91] p-2 rounded-lg mb-2">
+              <img 
+                src="https://images.unsplash.com/photo-1556742031-c6961e8560b0?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
+                alt="Khalti QR Code" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <p className="font-bold text-[#5C2D91] text-xs">{t('payment.khalti')}</p>
+          </div>
+
+          {/* Bank Transfer */}
+          <div onClick={handlePaymentSuccess} className="flex flex-col items-center p-3 border rounded-lg hover:bg-blue-100/50 cursor-pointer transition-colors dark:border-gray-700 dark:hover:bg-blue-900/20">
+            <div className="w-16 h-16 border-2 border-blue-500 p-2 rounded-lg mb-2 flex items-center justify-center">
+              <CreditCard className="h-8 w-8 text-blue-500" />
+            </div>
+            <p className="font-bold text-blue-500 text-xs">{t('payment.bank')}</p>
+          </div>
+
+          {/* IME Pay */}
+          <div onClick={handlePaymentSuccess} className="flex flex-col items-center p-3 border rounded-lg hover:bg-[#E11B22]/10 cursor-pointer transition-colors dark:border-gray-700 dark:hover:bg-[#E11B22]/5">
+            <div className="w-16 h-16 border-2 border-[#E11B22] p-2 rounded-lg mb-2">
+              <img 
+                src="https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
+                alt="IME Pay QR Code" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <p className="font-bold text-[#E11B22] text-xs">{t('payment.imepay')}</p>
+          </div>
+
+          {/* PayPal */}
+          <div onClick={handlePaymentSuccess} className="flex flex-col items-center p-3 border rounded-lg hover:bg-[#003087]/10 cursor-pointer transition-colors dark:border-gray-700 dark:hover:bg-[#003087]/5">
+            <div className="w-16 h-16 border-2 border-[#003087] p-2 rounded-lg mb-2 flex items-center justify-center">
+              <BanknoteIcon className="h-8 w-8 text-[#003087]" />
+            </div>
+            <p className="font-bold text-[#003087] text-xs">{t('payment.paypal')}</p>
           </div>
         </div>
         <div className="mt-4 flex flex-col items-center">
@@ -90,7 +127,6 @@ const PaymentMethods: React.FC = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {/* Starter Plan */}
           <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg animate-fade-in dark:border-gray-700" style={{ animationDelay: '200ms' }}>
             <CardHeader className="bg-background">
               <CardTitle className="text-xl font-bold">{t('pricing.starter.title')}</CardTitle>
@@ -123,7 +159,6 @@ const PaymentMethods: React.FC = () => {
             </CardFooter>
           </Card>
           
-          {/* Professional Plan */}
           <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg relative border-nepali-red animate-fade-in dark:border-red-700" style={{ animationDelay: '400ms' }}>
             <div className="absolute top-0 right-0 left-0 bg-nepali-red text-white text-center text-sm py-1 dark:bg-red-700">
               {t('pricing.popular')}
@@ -163,7 +198,6 @@ const PaymentMethods: React.FC = () => {
             </CardFooter>
           </Card>
           
-          {/* Premium Plan */}
           <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg animate-fade-in dark:border-gray-700" style={{ animationDelay: '600ms' }}>
             <CardHeader className="bg-background">
               <CardTitle className="text-xl font-bold">{t('pricing.premium.title')}</CardTitle>
@@ -201,12 +235,10 @@ const PaymentMethods: React.FC = () => {
           </Card>
         </div>
         
-        {/* Ready to Create? Section */}
         <div className="bg-nepali-red text-white p-8 rounded-lg text-center mt-10 animate-fade-in dark:bg-gray-800" style={{ animationDelay: '800ms' }}>
           <h2 className="text-3xl font-bold mb-4">{t('pricing.readyText')}</h2>
           <p className="mb-8">{t('pricing.readySubtext')}</p>
           
-          {/* Social Media Icons - Centered */}
           <div className="flex justify-center gap-6 w-full mb-8">
             <a href="https://wa.me/9779846920259" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/10 rounded-full hover:bg-white/20 transition-colors flex flex-col items-center">
               <Phone className="h-6 w-6 mb-1" />
@@ -236,31 +268,63 @@ const PaymentMethods: React.FC = () => {
                     {t('payment.choose')}
                   </DialogDescription>
                 </DialogHeader>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-4">
-                  {/* eSewa Payment Option */}
-                  <div onClick={handlePaymentSuccess} className="flex flex-col items-center p-4 border rounded-lg hover:bg-[#60BB46]/10 cursor-pointer transition-colors dark:border-gray-700 dark:hover:bg-[#60BB46]/5">
-                    <div className="w-32 h-32 border-2 border-[#60BB46] p-2 rounded-lg mb-2">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 py-4">
+                  <div onClick={handlePaymentSuccess} className="flex flex-col items-center p-3 border rounded-lg hover:bg-[#60BB46]/10 cursor-pointer transition-colors dark:border-gray-700 dark:hover:bg-[#60BB46]/5">
+                    <div className="w-16 h-16 border-2 border-[#60BB46] p-2 rounded-lg mb-2">
                       <img 
                         src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
                         alt="eSewa QR Code" 
                         className="w-full h-full object-cover"
                       />
                     </div>
-                    <p className="font-bold text-[#60BB46]">{t('payment.esewa')}</p>
-                    <p className="text-xs text-center mt-1">{t('payment.scan')}</p>
+                    <p className="font-bold text-[#60BB46] text-xs">{t('payment.esewa')}</p>
                   </div>
                   
-                  {/* PhonePay QR */}
-                  <div onClick={handlePaymentSuccess} className="flex flex-col items-center p-4 border rounded-lg hover:bg-[#5F259F]/10 cursor-pointer transition-colors dark:border-gray-700 dark:hover:bg-[#5F259F]/5">
-                    <div className="w-32 h-32 border-2 border-[#5F259F] p-2 rounded-lg mb-2">
+                  <div onClick={handlePaymentSuccess} className="flex flex-col items-center p-3 border rounded-lg hover:bg-[#5F259F]/10 cursor-pointer transition-colors dark:border-gray-700 dark:hover:bg-[#5F259F]/5">
+                    <div className="w-16 h-16 border-2 border-[#5F259F] p-2 rounded-lg mb-2">
                       <img 
                         src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
                         alt="PhonePay QR Code" 
                         className="w-full h-full object-cover"
                       />
                     </div>
-                    <p className="font-bold text-[#5F259F]">{t('payment.phonepay')}</p>
-                    <p className="text-xs text-center mt-1">{t('payment.scan')}</p>
+                    <p className="font-bold text-[#5F259F] text-xs">{t('payment.phonepay')}</p>
+                  </div>
+                  
+                  <div onClick={handlePaymentSuccess} className="flex flex-col items-center p-3 border rounded-lg hover:bg-[#5C2D91]/10 cursor-pointer transition-colors dark:border-gray-700 dark:hover:bg-[#5C2D91]/5">
+                    <div className="w-16 h-16 border-2 border-[#5C2D91] p-2 rounded-lg mb-2">
+                      <img 
+                        src="https://images.unsplash.com/photo-1556742031-c6961e8560b0?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
+                        alt="Khalti QR Code" 
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <p className="font-bold text-[#5C2D91] text-xs">{t('payment.khalti')}</p>
+                  </div>
+
+                  <div onClick={handlePaymentSuccess} className="flex flex-col items-center p-3 border rounded-lg hover:bg-blue-100/50 cursor-pointer transition-colors dark:border-gray-700 dark:hover:bg-blue-900/20">
+                    <div className="w-16 h-16 border-2 border-blue-500 p-2 rounded-lg mb-2 flex items-center justify-center">
+                      <CreditCard className="h-8 w-8 text-blue-500" />
+                    </div>
+                    <p className="font-bold text-blue-500 text-xs">{t('payment.bank')}</p>
+                  </div>
+
+                  <div onClick={handlePaymentSuccess} className="flex flex-col items-center p-3 border rounded-lg hover:bg-[#E11B22]/10 cursor-pointer transition-colors dark:border-gray-700 dark:hover:bg-[#E11B22]/5">
+                    <div className="w-16 h-16 border-2 border-[#E11B22] p-2 rounded-lg mb-2">
+                      <img 
+                        src="https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
+                        alt="IME Pay QR Code" 
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <p className="font-bold text-[#E11B22] text-xs">{t('payment.imepay')}</p>
+                  </div>
+
+                  <div onClick={handlePaymentSuccess} className="flex flex-col items-center p-3 border rounded-lg hover:bg-[#003087]/10 cursor-pointer transition-colors dark:border-gray-700 dark:hover:bg-[#003087]/5">
+                    <div className="w-16 h-16 border-2 border-[#003087] p-2 rounded-lg mb-2 flex items-center justify-center">
+                      <BanknoteIcon className="h-8 w-8 text-[#003087]" />
+                    </div>
+                    <p className="font-bold text-[#003087] text-xs">{t('payment.paypal')}</p>
                   </div>
                 </div>
                 <div className="mt-4 flex flex-col items-center">

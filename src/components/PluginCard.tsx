@@ -6,7 +6,7 @@ import { useTranslation } from '@/utils/i18n';
 import { Download, ShoppingCart } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
-import { Facebook, MessageSquare, Phone } from 'lucide-react';
+import { Facebook, MessageSquare, Phone, CreditCard, BanknoteIcon } from 'lucide-react';
 
 export interface Plugin {
   id: number;
@@ -113,31 +113,69 @@ const PluginCard: React.FC<PluginCardProps> = ({ plugin }) => {
                   {t('payment.choose')}
                 </DialogDescription>
               </DialogHeader>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-4">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 py-4">
                 {/* eSewa Payment Option */}
-                <div onClick={handlePaymentSuccess} className="flex flex-col items-center p-4 border rounded-lg hover:bg-[#60BB46]/10 cursor-pointer transition-colors dark:border-gray-700 dark:hover:bg-[#60BB46]/5">
-                  <div className="w-20 h-20 border-2 border-[#60BB46] p-2 rounded-lg mb-2">
+                <div onClick={handlePaymentSuccess} className="flex flex-col items-center p-3 border rounded-lg hover:bg-[#60BB46]/10 cursor-pointer transition-colors dark:border-gray-700 dark:hover:bg-[#60BB46]/5">
+                  <div className="w-16 h-16 border-2 border-[#60BB46] p-2 rounded-lg mb-2">
                     <img 
                       src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
                       alt="eSewa QR Code" 
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <p className="font-bold text-[#60BB46]">{t('payment.esewa')}</p>
-                  <p className="text-xs text-center mt-1">{t('payment.scan')}</p>
+                  <p className="font-bold text-[#60BB46] text-xs">{t('payment.esewa')}</p>
                 </div>
                 
                 {/* PhonePay QR */}
-                <div onClick={handlePaymentSuccess} className="flex flex-col items-center p-4 border rounded-lg hover:bg-[#5F259F]/10 cursor-pointer transition-colors dark:border-gray-700 dark:hover:bg-[#5F259F]/5">
-                  <div className="w-20 h-20 border-2 border-[#5F259F] p-2 rounded-lg mb-2">
+                <div onClick={handlePaymentSuccess} className="flex flex-col items-center p-3 border rounded-lg hover:bg-[#5F259F]/10 cursor-pointer transition-colors dark:border-gray-700 dark:hover:bg-[#5F259F]/5">
+                  <div className="w-16 h-16 border-2 border-[#5F259F] p-2 rounded-lg mb-2">
                     <img 
                       src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
                       alt="PhonePay QR Code" 
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <p className="font-bold text-[#5F259F]">{t('payment.phonepay')}</p>
-                  <p className="text-xs text-center mt-1">{t('payment.scan')}</p>
+                  <p className="font-bold text-[#5F259F] text-xs">{t('payment.phonepay')}</p>
+                </div>
+                
+                {/* Khalti */}
+                <div onClick={handlePaymentSuccess} className="flex flex-col items-center p-3 border rounded-lg hover:bg-[#5C2D91]/10 cursor-pointer transition-colors dark:border-gray-700 dark:hover:bg-[#5C2D91]/5">
+                  <div className="w-16 h-16 border-2 border-[#5C2D91] p-2 rounded-lg mb-2">
+                    <img 
+                      src="https://images.unsplash.com/photo-1556742031-c6961e8560b0?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
+                      alt="Khalti QR Code" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <p className="font-bold text-[#5C2D91] text-xs">{t('payment.khalti')}</p>
+                </div>
+
+                {/* Bank Transfer */}
+                <div onClick={handlePaymentSuccess} className="flex flex-col items-center p-3 border rounded-lg hover:bg-blue-100/50 cursor-pointer transition-colors dark:border-gray-700 dark:hover:bg-blue-900/20">
+                  <div className="w-16 h-16 border-2 border-blue-500 p-2 rounded-lg mb-2 flex items-center justify-center">
+                    <CreditCard className="h-8 w-8 text-blue-500" />
+                  </div>
+                  <p className="font-bold text-blue-500 text-xs">{t('payment.bank')}</p>
+                </div>
+
+                {/* IME Pay */}
+                <div onClick={handlePaymentSuccess} className="flex flex-col items-center p-3 border rounded-lg hover:bg-[#E11B22]/10 cursor-pointer transition-colors dark:border-gray-700 dark:hover:bg-[#E11B22]/5">
+                  <div className="w-16 h-16 border-2 border-[#E11B22] p-2 rounded-lg mb-2">
+                    <img 
+                      src="https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
+                      alt="IME Pay QR Code" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <p className="font-bold text-[#E11B22] text-xs">{t('payment.imepay')}</p>
+                </div>
+
+                {/* PayPal */}
+                <div onClick={handlePaymentSuccess} className="flex flex-col items-center p-3 border rounded-lg hover:bg-[#003087]/10 cursor-pointer transition-colors dark:border-gray-700 dark:hover:bg-[#003087]/5">
+                  <div className="w-16 h-16 border-2 border-[#003087] p-2 rounded-lg mb-2 flex items-center justify-center">
+                    <BanknoteIcon className="h-8 w-8 text-[#003087]" />
+                  </div>
+                  <p className="font-bold text-[#003087] text-xs">{t('payment.paypal')}</p>
                 </div>
               </div>
               <div className="mt-4 flex flex-col items-center">
