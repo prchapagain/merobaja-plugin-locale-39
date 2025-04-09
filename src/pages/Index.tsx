@@ -40,7 +40,9 @@ const Index = () => {
         <div id="testimonials" className="scroll-mt-20">
           <Testimonials />
         </div>
-        <YoutubeSection />
+        <div id="youtube" className="scroll-mt-20">
+          <YoutubeSection />
+        </div>
         <div id="payment" className="scroll-mt-20">
           <PaymentMethods />
         </div>

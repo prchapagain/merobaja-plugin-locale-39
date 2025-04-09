@@ -7,7 +7,7 @@ const YoutubeSection: React.FC = () => {
   const { t, language } = useTranslation();
 
   return (
-    <section id="youtube" className="py-16 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+    <section className="py-16 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <div className="inline-flex items-center justify-center gap-2 bg-red-100 text-red-600 px-4 py-2 rounded-full mb-4 dark:bg-red-900/30 dark:text-red-300">
