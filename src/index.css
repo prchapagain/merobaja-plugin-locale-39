@@ -35,7 +35,7 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -45,6 +45,9 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    --nepali-red: 1 77% 55%;
+    --nepali-gold: 45 93% 47%;
   }
 
   .dark {
@@ -83,6 +86,9 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    --nepali-red: 1 65% 45%;
+    --nepali-gold: 45 85% 50%;
   }
 }
 
@@ -93,6 +99,16 @@
 
   body {
     @apply bg-background text-foreground font-mukta;
+  }
+  
+  /* Light mode specific */
+  .light .glass-card {
+    @apply bg-white/90 backdrop-blur-md shadow-lg border border-gray-100;
+  }
+  
+  /* Dark mode specific */
+  .dark .glass-card {
+    @apply bg-gray-800/70 backdrop-blur-md shadow-lg border border-gray-700/50;
   }
 }
 
@@ -114,4 +130,38 @@
 @keyframes fadeIn {
   0% { opacity: 0; transform: translateY(10px); }
   100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Additional Animations */
+.hover-scale {
+  @apply transition-transform duration-200;
+}
+
+.hover-scale:hover {
+  @apply transform scale-105;
+}
+
+.hover-lift {
+  @apply transition-all duration-300;
+}
+
+.hover-lift:hover {
+  @apply -translate-y-1 shadow-lg;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-700 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400 dark:bg-gray-600;
 }

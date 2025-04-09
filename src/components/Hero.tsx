@@ -2,10 +2,11 @@
 import React from 'react';
 import { useTranslation } from '@/utils/i18n';
 import { Button } from '@/components/ui/button';
-import { Download, Play, Users, Star, Download as DownloadIcon, Headphones } from 'lucide-react';
+import { Download, Play, Users, Star, Download as DownloadIcon, Headphones, Youtube } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
 import { Facebook, MessageSquare, Phone } from 'lucide-react';
+import { AlertDialog, AlertDialogAction, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
 
 const Hero: React.FC = () => {
   const { t, language } = useTranslation();
@@ -13,10 +14,11 @@ const Hero: React.FC = () => {
 
   const handlePaymentSuccess = () => {
     toast({
-      title: language === 'en' ? "Payment Successful" : "भुक्तानी सफल भयो",
+      title: language === 'en' ? "Thank you for choosing our VST plugin!" : "हाम्रो VST प्लगइन छनौट गर्नुभएकोमा धन्यवाद!",
       description: language === 'en' ? 
-        "Please contact us on WhatsApp for download instructions." : 
-        "डाउनलोड निर्देशनहरूको लागि कृपया हामीलाई व्हाट्सएपमा सम्पर्क गर्नुहोस्।",
+        "Contact us to receive your download link. Notice: Please send payment slip to our WhatsApp number." : 
+        "डाउनलोड लिंक प्राप्त गर्न हामीलाई सम्पर्क गर्नुहोस्। सूचना: कृपया भुक्तानी स्लिप हाम्रो व्हाट्सएप नम्बरमा पठाउनुहोस्।",
+      variant: "success",
     });
   };
 
@@ -24,7 +26,7 @@ const Hero: React.FC = () => {
     <div className="relative bg-nepali-red text-white animate-fade-in dark:bg-gray-900">
       <div className="absolute inset-0 bg-gradient-to-r from-nepali-red/95 to-nepali-red/90 bg-cover bg-center dark:from-gray-900/95 dark:to-gray-800/90" />
       <div className="relative max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-start text-left mb-8">
+        <div className="flex flex-col items-center text-center mb-8">
           <span className="text-sm font-medium bg-white/20 px-3 py-1 rounded-full mb-2 animate-fade-in dark:bg-white/10">#1 Nepali VST Collection</span>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight animate-fade-in" style={{ animationDelay: '200ms' }}>
             {language === 'en' ? 'Authentic Nepali' : 'प्रामाणिक नेपाली'}<br />{language === 'en' ? 'Sound Library' : 'ध्वनि संग्रह'}
@@ -36,23 +38,27 @@ const Hero: React.FC = () => {
           </p>
           
           {/* Social Media Icons - Centered */}
-          <div className="mt-6 flex justify-center gap-6 w-full animate-fade-in" style={{ animationDelay: '1000ms' }}>
-            <a href="https://wa.me/9779846920259" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/10 rounded-full hover:bg-white/20 transition-colors flex flex-col items-center">
-              <Phone className="h-6 w-6 mb-1" />
-              <span className="text-xs">{t('contact.whatsapp')}</span>
+          <div className="mt-8 flex justify-center gap-8 w-full animate-fade-in" style={{ animationDelay: '1000ms' }}>
+            <a href="https://wa.me/9779846920259" target="_blank" rel="noopener noreferrer" className="p-4 bg-white/10 rounded-full hover:bg-white/20 transition-colors flex flex-col items-center hover:scale-105">
+              <Phone className="h-7 w-7 mb-2" />
+              <span className="text-sm">{t('contact.whatsapp')}</span>
             </a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/10 rounded-full hover:bg-white/20 transition-colors flex flex-col items-center">
-              <Facebook className="h-6 w-6 mb-1" />
-              <span className="text-xs">{t('contact.facebook')}</span>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="p-4 bg-white/10 rounded-full hover:bg-white/20 transition-colors flex flex-col items-center hover:scale-105">
+              <Facebook className="h-7 w-7 mb-2" />
+              <span className="text-sm">{t('contact.facebook')}</span>
             </a>
-            <a href="https://t.me/+9779846920259" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/10 rounded-full hover:bg-white/20 transition-colors flex flex-col items-center">
-              <MessageSquare className="h-6 w-6 mb-1" />
-              <span className="text-xs">{t('contact.telegram')}</span>
+            <a href="https://t.me/+9779846920259" target="_blank" rel="noopener noreferrer" className="p-4 bg-white/10 rounded-full hover:bg-white/20 transition-colors flex flex-col items-center hover:scale-105">
+              <MessageSquare className="h-7 w-7 mb-2" />
+              <span className="text-sm">{t('contact.telegram')}</span>
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="p-4 bg-white/10 rounded-full hover:bg-white/20 transition-colors flex flex-col items-center hover:scale-105">
+              <Youtube className="h-7 w-7 mb-2" />
+              <span className="text-sm">{t('contact.youtube')}</span>
             </a>
           </div>
           
-          <div className="mt-8 flex flex-wrap gap-4 animate-fade-in" style={{ animationDelay: '600ms' }}>
-            <Dialog>
+          <div className="mt-10 flex flex-wrap gap-4 justify-center animate-fade-in" style={{ animationDelay: '600ms' }}>
+            <AlertDialog>
               <DialogTrigger asChild>
                 <Button 
                   size="lg" 
@@ -110,7 +116,7 @@ const Hero: React.FC = () => {
                   </div>
                 </div>
               </DialogContent>
-            </Dialog>
+            </AlertDialog>
             <Button 
               size="lg" 
               variant="outline" 
@@ -121,31 +127,31 @@ const Hero: React.FC = () => {
           </div>
           
           {/* User Rating Section - With Enhanced Visual */}
-          <div className="mt-12 w-full py-6 px-4 bg-white/10 rounded-xl dark:bg-gray-800/50">
-            <h3 className="text-xl font-semibold mb-4 text-center">{language === 'en' ? 'User Reviews & Stats' : 'प्रयोगकर्ता समीक्षा र तथ्याङ्कहरू'}</h3>
+          <div className="mt-12 w-full py-8 px-6 bg-white/15 rounded-2xl backdrop-blur-sm border border-white/20 shadow-lg dark:bg-gray-800/50 dark:border-gray-700/50">
+            <h3 className="text-2xl font-bold mb-6 text-center">{language === 'en' ? 'User Reviews & Stats' : 'प्रयोगकर्ता समीक्षा र तथ्याङ्कहरू'}</h3>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 md:gap-12 w-full animate-fade-in" style={{ animationDelay: '800ms' }}>
-              <div className="flex flex-col items-center p-3 bg-white/5 rounded-lg hover:bg-white/10 transition-all">
-                <Users className="h-6 w-6 mb-2 opacity-80" />
+              <div className="flex flex-col items-center p-4 bg-white/10 rounded-xl hover:bg-white/20 transition-all hover:scale-105">
+                <Users className="h-8 w-8 mb-3 opacity-80" />
                 <span className="text-2xl sm:text-3xl font-bold">5K+</span>
-                <span className="text-sm opacity-80">{t('hero.stats.users')}</span>
+                <span className="text-sm opacity-90 mt-1">{t('hero.stats.users')}</span>
               </div>
               
-              <div className="flex flex-col items-center p-3 bg-white/5 rounded-lg hover:bg-white/10 transition-all">
-                <Star className="h-6 w-6 mb-2 text-nepali-gold" />
+              <div className="flex flex-col items-center p-4 bg-white/10 rounded-xl hover:bg-white/20 transition-all hover:scale-105">
+                <Star className="h-8 w-8 mb-3 text-nepali-gold" />
                 <span className="text-2xl sm:text-3xl font-bold">4.9/5</span>
-                <span className="text-sm opacity-80">{t('hero.stats.rating')}</span>
+                <span className="text-sm opacity-90 mt-1">{t('hero.stats.rating')}</span>
               </div>
               
-              <div className="flex flex-col items-center p-3 bg-white/5 rounded-lg hover:bg-white/10 transition-all">
-                <DownloadIcon className="h-6 w-6 mb-2 opacity-80" />
+              <div className="flex flex-col items-center p-4 bg-white/10 rounded-xl hover:bg-white/20 transition-all hover:scale-105">
+                <DownloadIcon className="h-8 w-8 mb-3 opacity-80" />
                 <span className="text-2xl sm:text-3xl font-bold">10K+</span>
-                <span className="text-sm opacity-80">{t('hero.stats.downloads')}</span>
+                <span className="text-sm opacity-90 mt-1">{t('hero.stats.downloads')}</span>
               </div>
               
-              <div className="flex flex-col items-center p-3 bg-white/5 rounded-lg hover:bg-white/10 transition-all">
-                <Headphones className="h-6 w-6 mb-2 opacity-80" />
+              <div className="flex flex-col items-center p-4 bg-white/10 rounded-xl hover:bg-white/20 transition-all hover:scale-105">
+                <Headphones className="h-8 w-8 mb-3 opacity-80" />
                 <span className="text-2xl sm:text-3xl font-bold">24/7</span>
-                <span className="text-sm opacity-80">{t('hero.stats.support')}</span>
+                <span className="text-sm opacity-90 mt-1">{t('hero.stats.support')}</span>
               </div>
             </div>
           </div>

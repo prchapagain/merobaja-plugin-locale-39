@@ -6,6 +6,7 @@ import PluginGrid from '@/components/PluginGrid';
 import PaymentMethods from '@/components/PaymentMethods';
 import Footer from '@/components/Footer';
 import Testimonials from '@/components/Testimonials';
+import YoutubeSection from '@/components/YoutubeSection';
 import { useLocation } from 'react-router-dom';
 
 const Index = () => {
@@ -29,7 +30,7 @@ const Index = () => {
   }, [location]);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
       <Navbar />
       <main className="flex-grow">
         <Hero />
@@ -38,6 +39,9 @@ const Index = () => {
         </div>
         <div id="testimonials" className="scroll-mt-20">
           <Testimonials />
+        </div>
+        <div id="youtube" className="scroll-mt-20">
+          <YoutubeSection />
         </div>
         <div id="payment" className="scroll-mt-20">
           <PaymentMethods />

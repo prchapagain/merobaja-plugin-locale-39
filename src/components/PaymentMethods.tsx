@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useTranslation } from '@/utils/i18n';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -5,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Check, Download, ArrowRight, CreditCard, BanknoteIcon } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
-import { Facebook, MessageSquare, Phone } from 'lucide-react';
+import { Facebook, MessageSquare, Phone, Youtube } from 'lucide-react';
 
 const PaymentMethods: React.FC = () => {
   const { t, language } = useTranslation();
@@ -13,10 +14,11 @@ const PaymentMethods: React.FC = () => {
 
   const handlePaymentSuccess = () => {
     toast({
-      title: language === 'en' ? "Payment Successful" : "भुक्तानी सफल भयो",
+      title: language === 'en' ? "Thank you for choosing our VST plugin!" : "हाम्रो VST प्लगइन छनौट गर्नुभएकोमा धन्यवाद!",
       description: language === 'en' ? 
-        "Please contact us on WhatsApp for download instructions." : 
-        "डाउनलोड निर्देशनहरूको लागि कृपया हामीलाई व्हाट्सएपमा सम्पर्क गर्नुहोस्।",
+        "Contact us to receive your download link. Notice: Please send payment slip to our WhatsApp number." : 
+        "डाउनलोड लिंक प्राप्त गर्न हामीलाई सम्पर्क गर्नुहोस्। सूचना: कृपया भुक्तानी स्लिप हाम्रो व्हाट्सएप नम्बरमा पठाउनुहोस्।",
+      variant: "success",
     });
   };
 
