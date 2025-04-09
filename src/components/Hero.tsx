@@ -6,7 +6,7 @@ import { Download, Play, Users, Star, Download as DownloadIcon, Headphones, Yout
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
 import { Facebook, MessageSquare, Phone } from 'lucide-react';
-import { AlertDialog, AlertDialogAction, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
+import { AlertDialog, AlertDialogAction, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 
 const Hero: React.FC = () => {
   const { t, language } = useTranslation();
@@ -18,7 +18,7 @@ const Hero: React.FC = () => {
       description: language === 'en' ? 
         "Contact us to receive your download link. Notice: Please send payment slip to our WhatsApp number." : 
         "डाउनलोड लिंक प्राप्त गर्न हामीलाई सम्पर्क गर्नुहोस्। सूचना: कृपया भुक्तानी स्लिप हाम्रो व्हाट्सएप नम्बरमा पठाउनुहोस्।",
-      variant: "success",
+      variant: "default", // Changed from "success" to "default"
     });
   };
 
@@ -59,21 +59,21 @@ const Hero: React.FC = () => {
           
           <div className="mt-10 flex flex-wrap gap-4 justify-center animate-fade-in" style={{ animationDelay: '600ms' }}>
             <AlertDialog>
-              <DialogTrigger asChild>
+              <AlertDialogTrigger asChild>
                 <Button 
                   size="lg" 
                   className="bg-white hover:bg-white/90 text-nepali-red font-semibold flex gap-2 items-center dark:bg-gray-200 dark:text-gray-800"
                 >
                   <Download className="h-5 w-5" /> {t('hero.download')}
                 </Button>
-              </DialogTrigger>
-              <DialogContent className="sm:max-w-md dark:bg-gray-800 dark:border-gray-700">
-                <DialogHeader>
-                  <DialogTitle>{t('payment.title')}</DialogTitle>
-                  <DialogDescription>
+              </AlertDialogTrigger>
+              <AlertDialogContent className="sm:max-w-md dark:bg-gray-800 dark:border-gray-700">
+                <AlertDialogHeader>
+                  <AlertDialogTitle>{t('payment.title')}</AlertDialogTitle>
+                  <AlertDialogDescription>
                     {t('payment.choose')}
-                  </DialogDescription>
-                </DialogHeader>
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-4">
                   {/* eSewa Payment Option */}
                   <div onClick={handlePaymentSuccess} className="flex flex-col items-center p-4 border rounded-lg hover:bg-[#60BB46]/10 cursor-pointer transition-colors dark:border-gray-700 dark:hover:bg-[#60BB46]/5">
@@ -115,7 +115,7 @@ const Hero: React.FC = () => {
                     </a>
                   </div>
                 </div>
-              </DialogContent>
+              </AlertDialogContent>
             </AlertDialog>
             <Button 
               size="lg" 

@@ -18,7 +18,7 @@ const PaymentMethods: React.FC = () => {
       description: language === 'en' ? 
         "Contact us to receive your download link. Notice: Please send payment slip to our WhatsApp number." : 
         "डाउनलोड लिंक प्राप्त गर्न हामीलाई सम्पर्क गर्नुहोस्। सूचना: कृपया भुक्तानी स्लिप हाम्रो व्हाट्सएप नम्बरमा पठाउनुहोस्।",
-      variant: "success",
+      variant: "default", // Changed from "success" to "default"
     });
   };
 
