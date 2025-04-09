@@ -3,7 +3,6 @@ import React from 'react';
 import { useTranslation } from '@/utils/i18n';
 import { Button } from '@/components/ui/button';
 import { Download, Play, Users, Star, Download as DownloadIcon, Headphones, Youtube } from 'lucide-react';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
 import { Facebook, MessageSquare, Phone } from 'lucide-react';
 import { AlertDialog, AlertDialogAction, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
