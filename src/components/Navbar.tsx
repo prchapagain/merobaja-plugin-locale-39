@@ -60,9 +60,15 @@ const Navbar: React.FC = () => {
           <Link to="/#testimonials" className="text-sm font-medium hover:text-primary">
             {t('testimonials.title')}
           </Link>
+          <Link to="/#youtube" className="text-sm font-medium hover:text-primary">
+            {t('nav.youtube')}
+          </Link>
           <Link to="/#payment" className="text-sm font-medium hover:text-primary">
             {t('payment.title')}
           </Link>
+          <a href="https://merotips.com" target="_blank" rel="noopener noreferrer" className="text-sm font-medium hover:text-primary">
+            {t('nav.blog')}
+          </a>
           <Link to="/about" className="text-sm font-medium hover:text-primary">
             {t('nav.about')}
           </Link>
@@ -111,12 +117,28 @@ const Navbar: React.FC = () => {
               {t('testimonials.title')}
             </Link>
             <Link 
+              to="/#youtube" 
+              className="text-sm font-medium hover:text-primary"
+              onClick={closeMenu}
+            >
+              {t('nav.youtube')}
+            </Link>
+            <Link 
               to="/#payment" 
               className="text-sm font-medium hover:text-primary"
               onClick={closeMenu}
             >
               {t('payment.title')}
             </Link>
+            <a 
+              href="https://merotips.com" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-sm font-medium hover:text-primary"
+              onClick={closeMenu}
+            >
+              {t('nav.blog')}
+            </a>
             <Link 
               to="/about" 
               className="text-sm font-medium hover:text-primary"
