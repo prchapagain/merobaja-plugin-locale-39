@@ -69,9 +69,9 @@ const Navbar: React.FC = () => {
           <Link to="/#payment" className="text-sm font-medium hover:text-primary">
             {t('payment.title')}
           </Link>
-          <a href="https://merotips.com" target="_blank" rel="noopener noreferrer" className="text-sm font-medium hover:text-primary">
+          <Link to="/blog" className="text-sm font-medium hover:text-primary">
             {t('nav.blog')}
-          </a>
+          </Link>
           <Link to="/about" className="text-sm font-medium hover:text-primary">
             {t('nav.about')}
           </Link>
@@ -140,15 +140,13 @@ const Navbar: React.FC = () => {
             >
               {t('payment.title')}
             </Link>
-            <a 
-              href="https://merotips.com" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <Link 
+              to="/blog" 
               className="text-sm font-medium hover:text-primary"
               onClick={closeMenu}
             >
               {t('nav.blog')}
-            </a>
+            </Link>
             <Link 
               to="/about" 
               className="text-sm font-medium hover:text-primary"
