@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -7,9 +7,22 @@ import { Button } from '@/components/ui/button';
 import { Clock, Calendar, User, ArrowRight, Rss } from 'lucide-react';
 import { useTranslation } from '@/utils/i18n';
 import { useQuery } from '@tanstack/react-query';
+import { Skeleton } from '@/components/ui/skeleton';
+
+interface BlogPost {
+  id: string;
+  title: string;
+  excerpt: string;
+  author: string;
+  date: string;
+  readTime: string;
+  image: string;
+  category: string;
+  url: string;
+}
 
 // Function to fetch blog posts from merotips.com RSS feed
-const fetchMeroTipsPosts = async () => {
+const fetchMeroTipsPosts = async (): Promise<BlogPost[]> => {
   try {
     const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://merotips.com/feed/');
     const data = await response.json();
@@ -101,15 +114,17 @@ const Blog = () => {
             // Loading state
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[1, 2, 3].map((n) => (
-                <Card key={n} className="h-[400px] animate-pulse">
-                  <div className="h-48 bg-gray-200 dark:bg-gray-700 rounded-t-lg"></div>
+                <Card key={n} className="h-[400px]">
+                  <div className="h-48">
+                    <Skeleton className="h-full w-full rounded-t-lg" />
+                  </div>
                   <CardHeader>
-                    <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded w-3/4 mb-2"></div>
-                    <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
+                    <Skeleton className="h-6 w-3/4 mb-2" />
+                    <Skeleton className="h-4 w-1/2" />
                   </CardHeader>
                   <CardContent>
-                    <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded mb-2"></div>
-                    <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-5/6"></div>
+                    <Skeleton className="h-4 w-full mb-2" />
+                    <Skeleton className="h-4 w-5/6" />
                   </CardContent>
                 </Card>
               ))}
