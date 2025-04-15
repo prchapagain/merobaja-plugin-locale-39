@@ -54,6 +54,9 @@ const Navbar: React.FC = () => {
           <Link to="/" className="text-sm font-medium hover:text-primary">
             {t('nav.home')}
           </Link>
+          <Link to="/#featured" className="text-sm font-medium hover:text-primary">
+            {t('nav.featured')}
+          </Link>
           <Link to="/#plugins" className="text-sm font-medium hover:text-primary">
             {t('nav.plugins')}
           </Link>
@@ -101,6 +104,13 @@ const Navbar: React.FC = () => {
               onClick={closeMenu}
             >
               {t('nav.home')}
+            </Link>
+            <Link 
+              to="/#featured" 
+              className="text-sm font-medium hover:text-primary"
+              onClick={closeMenu}
+            >
+              {t('nav.featured')}
             </Link>
             <Link 
               to="/#plugins" 

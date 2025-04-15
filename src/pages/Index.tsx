@@ -7,6 +7,7 @@ import PaymentMethods from '@/components/PaymentMethods';
 import Footer from '@/components/Footer';
 import Testimonials from '@/components/Testimonials';
 import YoutubeSection from '@/components/YoutubeSection';
+import FeaturedProduct from '@/components/FeaturedProduct';
 import { useLocation } from 'react-router-dom';
 
 const Index = () => {
@@ -34,6 +35,9 @@ const Index = () => {
       <Navbar />
       <main className="flex-grow">
         <Hero />
+        <div id="featured" className="scroll-mt-20">
+          <FeaturedProduct />
+        </div>
         <div id="plugins" className="scroll-mt-20">
           <PluginGrid />
         </div>
