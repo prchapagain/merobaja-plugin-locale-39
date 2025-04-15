@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -94,8 +95,8 @@ const fetchMeroTipsPosts = async (): Promise<BlogPost[]> => {
     const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://merotips.com/feed/');
     const data = await response.json();
     
-    if (data.status !== 'ok') {
-      console.error('Error fetching blog posts:', data.message);
+    if (data.status !== 'ok' || !data.items || data.items.length === 0) {
+      console.error('Error fetching blog posts:', data.message || 'No items in feed');
       return fallbackBlogPosts;
     }
     
@@ -111,7 +112,7 @@ const fetchMeroTipsPosts = async (): Promise<BlogPost[]> => {
       url: item.link
     }));
   } catch (error) {
-    console.error('Error fetching blog posts:', error);
+    console.error('Network error fetching blog posts:', error);
     return fallbackBlogPosts;
   }
 };
