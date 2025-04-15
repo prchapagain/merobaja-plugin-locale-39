@@ -1,118 +1,54 @@
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from '@/components/ui/button';
-import { Clock, Calendar, User, ArrowRight } from 'lucide-react';
+import { Clock, Calendar, User, ArrowRight, Rss } from 'lucide-react';
 import { useTranslation } from '@/utils/i18n';
+import { useQuery } from '@tanstack/react-query';
 
-interface BlogPost {
-  id: number;
-  title: string;
-  excerpt: string;
-  author: string;
-  date: string;
-  readTime: string;
-  image: string;
-  category: string;
-  url: string;
-}
+// Function to fetch blog posts from merotips.com RSS feed
+const fetchMeroTipsPosts = async () => {
+  try {
+    const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://merotips.com/feed/');
+    const data = await response.json();
+    return data.items.map((item: any) => ({
+      id: item.guid,
+      title: item.title,
+      excerpt: item.description.substring(0, 150) + '...',
+      author: item.author,
+      date: new Date(item.pubDate).toISOString(),
+      readTime: '5 min', // Estimated reading time
+      image: item.thumbnail || 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d',
+      category: item.categories[0] || 'General',
+      url: item.link
+    }));
+  } catch (error) {
+    console.error('Error fetching blog posts:', error);
+    return [];
+  }
+};
 
 const Blog = () => {
   const { t } = useTranslation();
-  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [selectedCategory, setSelectedCategory] = useState('all');
 
-  useEffect(() => {
-    // In a real application, you would fetch this data from an API
-    // This is mock data for demonstration purposes
-    const mockBlogPosts: BlogPost[] = [
-      {
-        id: 1,
-        title: "Getting Started with Sarangi Virtual",
-        excerpt: "Learn how to create authentic Nepali sounds with the Sarangi Virtual plugin.",
-        author: "Rajesh Hamal",
-        date: "2025-03-15",
-        readTime: "5 min",
-        image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-        category: "tutorials",
-        url: "https://merotips.com/getting-started-with-sarangi-virtual"
-      },
-      {
-        id: 2,
-        title: "The Evolution of Nepali Music Production",
-        excerpt: "Exploring how digital tools are transforming traditional Nepali music production.",
-        author: "Anu Malik",
-        date: "2025-03-10",
-        readTime: "8 min",
-        image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-        category: "industry",
-        url: "https://merotips.com/evolution-of-nepali-music-production"
-      },
-      {
-        id: 3,
-        title: "Top 5 Tips for Using Madal Drummer",
-        excerpt: "Professional tips to get the most out of the free Madal Drummer plugin.",
-        author: "Deepak Bajracharya",
-        date: "2025-03-05",
-        readTime: "6 min",
-        image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-        category: "tutorials",
-        url: "https://merotips.com/madal-drummer-tips"
-      },
-      {
-        id: 4,
-        title: "Interview with Nepali Music Producer Bipul Chettri",
-        excerpt: "Exclusive interview with renowned producer about using Nepali VST plugins.",
-        author: "Melina Rai",
-        date: "2025-02-28",
-        readTime: "10 min",
-        image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-        category: "interviews",
-        url: "https://merotips.com/interview-bipul-chettri"
-      },
-      {
-        id: 5,
-        title: "Creating Film Soundtracks with NepalEcho",
-        excerpt: "How to use NepalEcho to create cinematic soundscapes for film projects.",
-        author: "Bartika Eam Rai",
-        date: "2025-02-20",
-        readTime: "7 min",
-        image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-        category: "tutorials",
-        url: "https://merotips.com/film-soundtracks-nepalecho"
-      },
-      {
-        id: 6,
-        title: "The Future of Nepali Music Technology",
-        excerpt: "Predictions and trends for the next generation of Nepali music tech.",
-        author: "Abhaya Subba",
-        date: "2025-02-15",
-        readTime: "9 min",
-        image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-        category: "industry",
-        url: "https://merotips.com/future-nepali-music-technology"
-      }
-    ];
-
-    // Simulate loading delay
-    setTimeout(() => {
-      setBlogPosts(mockBlogPosts);
-      setIsLoading(false);
-    }, 500);
-  }, []);
+  const { data: blogPosts = [], isLoading } = useQuery({
+    queryKey: ['meroTipsPosts'],
+    queryFn: fetchMeroTipsPosts,
+    staleTime: 1000 * 60 * 5, // Cache for 5 minutes
+  });
 
   // Filter blog posts by category
   const filteredBlogPosts = selectedCategory === 'all' 
     ? blogPosts 
-    : blogPosts.filter(post => post.category === selectedCategory);
+    : blogPosts.filter(post => post.category.toLowerCase() === selectedCategory.toLowerCase());
 
-  // Get unique categories
-  const categories = ['all', ...new Set(blogPosts.map(post => post.category))];
+  // Get unique categories from posts
+  const categories = ['all', ...new Set(blogPosts.map(post => post.category.toLowerCase()))];
 
-  // Format date to readable format
+  // Format date
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', {
@@ -134,6 +70,17 @@ const Blog = () => {
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               {t('blog.description') || 'Latest updates, tutorials, and insights about Nepali VST plugins and music production.'}
             </p>
+            <div className="mt-4">
+              <a 
+                href="https://merotips.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center text-nepali-red hover:text-red-700 transition-colors"
+              >
+                <Rss className="h-4 w-4 mr-2" />
+                Follow our blog on MeroTips.com
+              </a>
+            </div>
           </div>
 
           {/* Category Filter */}
@@ -189,14 +136,14 @@ const Blog = () => {
                         {post.readTime}
                       </div>
                     </div>
-                    <CardTitle className="text-xl">{post.title}</CardTitle>
+                    <CardTitle className="text-xl line-clamp-2">{post.title}</CardTitle>
                     <CardDescription className="text-sm flex items-center gap-2">
                       <Calendar className="h-3 w-3" />
                       {formatDate(post.date)}
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="flex-grow">
-                    <p className="text-gray-600 dark:text-gray-300">{post.excerpt}</p>
+                    <p className="text-gray-600 dark:text-gray-300 line-clamp-3">{post.excerpt}</p>
                   </CardContent>
                   <CardFooter className="pt-2">
                     <div className="flex justify-between items-center w-full">
@@ -218,21 +165,6 @@ const Blog = () => {
               ))}
             </div>
           )}
-
-          {/* Show more button */}
-          <div className="flex justify-center mt-10">
-            <a 
-              href="https://merotips.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center"
-            >
-              <Button variant="outline" size="lg">
-                {t('blog.viewMore') || 'View more on MeroTips.com'}
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </a>
-          </div>
         </div>
       </main>
       <Footer />
