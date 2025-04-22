@@ -92,25 +92,50 @@ const fallbackBlogPosts: BlogPost[] = [
 
 const fetchMeroTipsPosts = async (): Promise<BlogPost[]> => {
   try {
-    const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://merotips.com/feed/');
+    // This is a temporary solution - ideally this would be done server-side
+    // as scraping might not be reliable long-term
+    const response = await fetch('https://api.allorigins.win/get?url=' + encodeURIComponent('https://www.merotips.com/search'));
     const data = await response.json();
     
-    if (data.status !== 'ok' || !data.items || data.items.length === 0) {
-      console.error('Error fetching blog posts:', data.message || 'No items in feed');
+    if (!data.contents) {
+      console.error('Error fetching blog posts: No content retrieved');
       return fallbackBlogPosts;
     }
+
+    // Create a temporary DOM element to parse the HTML
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(data.contents, 'text/html');
     
-    return data.items.map((item: any) => ({
-      id: item.guid,
-      title: item.title,
-      excerpt: item.description.substring(0, 150) + '...',
-      author: item.author,
-      date: new Date(item.pubDate).toISOString(),
-      readTime: '5 min',
-      image: item.thumbnail || 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d',
-      category: item.categories[0] || 'General',
-      url: item.link
-    }));
+    // Find all blog post articles
+    const articles = doc.querySelectorAll('article.post');
+    
+    if (!articles.length) {
+      console.error('No articles found on page');
+      return fallbackBlogPosts;
+    }
+
+    const posts: BlogPost[] = Array.from(articles).map((article, index) => {
+      const title = article.querySelector('.entry-title a')?.textContent || 'Untitled';
+      const link = article.querySelector('.entry-title a')?.getAttribute('href') || '';
+      const excerpt = article.querySelector('.entry-excerpt')?.textContent?.trim() || '';
+      const author = article.querySelector('.entry-author-name')?.textContent || 'Unknown';
+      const date = article.querySelector('.entry-date')?.getAttribute('datetime') || new Date().toISOString();
+      const thumbnail = article.querySelector('img')?.getAttribute('src') || 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d';
+      
+      return {
+        id: index.toString(),
+        title,
+        excerpt: excerpt.substring(0, 150) + '...',
+        author,
+        date,
+        readTime: '5 min',
+        image: thumbnail,
+        category: 'Blog',
+        url: link
+      };
+    });
+
+    return posts.length > 0 ? posts : fallbackBlogPosts;
   } catch (error) {
     console.error('Network error fetching blog posts:', error);
     return fallbackBlogPosts;
