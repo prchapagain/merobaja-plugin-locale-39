@@ -2,61 +2,59 @@
 import { useQuery } from '@tanstack/react-query';
 import { BlogPost } from '@/types/blog';
 
-// Create mock data for blog posts since we can't rely on external API
-const mockBlogPosts: BlogPost[] = [
-  {
-    id: '1',
-    title: 'Getting Started with Nepali VST Plugins',
-    excerpt: 'Learn how to install and set up our Nepali VST plugins in your favorite DAW. This step-by-step guide covers everything from installation to basic usage.',
-    author: 'Anish Sharma',
-    date: '2024-04-15',
-    readTime: '5 min',
-    image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80',
-    category: 'Tutorials',
-    url: 'https://merotips.com/getting-started-with-nepali-vst-plugins'
-  },
-  {
-    id: '2',
-    title: 'Advanced Madal Techniques for Electronic Music',
-    excerpt: 'Discover how to integrate traditional Nepali Madal rhythms into modern electronic music production. Tips and tricks from professional producers.',
-    author: 'Rajesh Hamal',
-    date: '2024-04-10',
-    readTime: '8 min',
-    image: 'https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?auto=format&fit=crop&w=800&q=80',
-    category: 'Production Tips',
-    url: 'https://merotips.com/madal-techniques-electronic-music'
-  },
-  {
-    id: '3',
-    title: 'Creating Authentic Nepali Film Scores',
-    excerpt: 'How to compose authentic Nepali film scores using our VST instrument collection. Learn from professional film composers working in the Nepali film industry.',
-    author: 'Shanti Gurung',
-    date: '2024-04-05',
-    readTime: '10 min',
-    image: 'https://images.unsplash.com/photo-1578022761797-b8636ac1773c?auto=format&fit=crop&w=800&q=80',
-    category: 'Film Scoring',
-    url: 'https://merotips.com/nepali-film-scores'
-  },
-];
+// Create minimal fallback data in case API is unavailable
+const fallbackPost: BlogPost = {
+  id: '0',
+  title: 'Visit MeroTips.com for Latest Blog Posts',
+  excerpt: 'Due to cross-origin restrictions, we cannot display the blog posts directly. Please visit MeroTips.com to read all articles.',
+  author: 'MeroTips',
+  date: new Date().toISOString(),
+  readTime: '1 min',
+  image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80',
+  category: 'Blog',
+  url: 'https://merotips.com'
+};
 
 export const useMeroTipsPosts = () => {
   return useQuery({
     queryKey: ['meroTipsPosts'],
     queryFn: async () => {
       try {
-        // Create a proxy URL to avoid CORS issues
-        const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+        // Try different CORS proxy options
+        const proxyOptions = [
+          'https://corsproxy.io/?',
+          'https://api.allorigins.win/raw?url=',
+          'https://api.codetabs.com/v1/proxy/?quest='
+        ];
+        
         const targetUrl = 'https://merotips.com/wp-json/wp/v2/posts?_embed&per_page=10';
         
-        // Try to fetch from the proxy
-        const response = await fetch(proxyUrl + targetUrl, {
-          headers: {
-            'Origin': window.location.origin
-          }
-        });
+        // Try each proxy in sequence until one works
+        let response = null;
+        let error = null;
         
-        if (!response.ok) {
-          throw new Error('Failed to fetch from MeroTips');
+        for (const proxy of proxyOptions) {
+          try {
+            response = await fetch(proxy + encodeURIComponent(targetUrl), {
+              headers: {
+                'Origin': window.location.origin
+              }
+            });
+            
+            if (response.ok) {
+              break;
+            }
+          } catch (err) {
+            error = err;
+            console.log(`Proxy ${proxy} failed:`, err);
+            // Continue to the next proxy
+          }
+        }
+        
+        if (!response || !response.ok) {
+          console.log('All proxies failed, directing user to MeroTips.com');
+          // Return a single fallback post that directs to MeroTips.com
+          return [fallbackPost];
         }
         
         const wpPosts = await response.json();
@@ -77,10 +75,11 @@ export const useMeroTipsPosts = () => {
         return posts;
       } catch (error) {
         console.error('Error fetching from MeroTips:', error);
-        // Return mock data as fallback
-        return mockBlogPosts;
+        // Return minimal fallback data
+        return [fallbackPost];
       }
     },
     staleTime: 1000 * 60 * 5, // 5 minutes
+    retry: 1, // Only retry once
   });
 };
