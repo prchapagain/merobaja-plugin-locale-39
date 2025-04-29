@@ -1,9 +1,10 @@
+
 import React from 'react';
 import { useTranslation } from '@/utils/i18n';
 import { Button } from '@/components/ui/button';
 import { Download, Play, Users, Star, Download as DownloadIcon, Headphones, Youtube } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
-import { Facebook, MessageSquare, Phone } from 'lucide-react';
+import { Facebook, Instagram, Mail, Phone } from 'lucide-react';
 import { AlertDialog, AlertDialogAction, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 
 const Hero: React.FC = () => {
@@ -36,19 +37,19 @@ const Hero: React.FC = () => {
           </p>
           
           <div className="mt-8 flex justify-center gap-8 w-full animate-fade-in" style={{ animationDelay: '1000ms' }}>
-            <a href="https://wa.me/9779846920259" target="_blank" rel="noopener noreferrer" className="p-4 bg-white/10 rounded-full hover:bg-white/20 transition-colors flex flex-col items-center hover:scale-105">
+            <a href="https://wa.me/9779817417650" target="_blank" rel="noopener noreferrer" className="p-4 bg-white/10 rounded-full hover:bg-white/20 transition-colors flex flex-col items-center hover:scale-105">
               <Phone className="h-7 w-7 mb-2" />
               <span className="text-sm">{t('contact.whatsapp')}</span>
             </a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="p-4 bg-white/10 rounded-full hover:bg-white/20 transition-colors flex flex-col items-center hover:scale-105">
+            <a href="https://facebook.com/pkentertainmentnepal" target="_blank" rel="noopener noreferrer" className="p-4 bg-white/10 rounded-full hover:bg-white/20 transition-colors flex flex-col items-center hover:scale-105">
               <Facebook className="h-7 w-7 mb-2" />
               <span className="text-sm">{t('contact.facebook')}</span>
             </a>
-            <a href="https://t.me/+9779846920259" target="_blank" rel="noopener noreferrer" className="p-4 bg-white/10 rounded-full hover:bg-white/20 transition-colors flex flex-col items-center hover:scale-105">
-              <MessageSquare className="h-7 w-7 mb-2" />
-              <span className="text-sm">{t('contact.telegram')}</span>
+            <a href="https://www.instagram.com/prchapagain_" target="_blank" rel="noopener noreferrer" className="p-4 bg-white/10 rounded-full hover:bg-white/20 transition-colors flex flex-col items-center hover:scale-105">
+              <Instagram className="h-7 w-7 mb-2" />
+              <span className="text-sm">{t('contact.instagram')}</span>
             </a>
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="p-4 bg-white/10 rounded-full hover:bg-white/20 transition-colors flex flex-col items-center hover:scale-105">
+            <a href="https://www.youtube.com/channel/UC2WaEDHGQIiaR8Sh93Y5-Bg" target="_blank" rel="noopener noreferrer" className="p-4 bg-white/10 rounded-full hover:bg-white/20 transition-colors flex flex-col items-center hover:scale-105">
               <Youtube className="h-7 w-7 mb-2" />
               <span className="text-sm">{t('contact.youtube')}</span>
             </a>
@@ -99,14 +100,14 @@ const Hero: React.FC = () => {
                 <div className="mt-4 flex flex-col items-center">
                   <p className="text-sm text-center mb-3">{t('payment.contactAfter')}</p>
                   <div className="flex gap-4 justify-center">
-                    <a href="https://wa.me/9779846920259" target="_blank" rel="noopener noreferrer" className="p-2 bg-green-600 rounded-full text-white hover:bg-green-700 transition-colors">
+                    <a href="https://wa.me/9779817417650" target="_blank" rel="noopener noreferrer" className="p-2 bg-green-600 rounded-full text-white hover:bg-green-700 transition-colors">
                       <Phone className="h-5 w-5" />
                     </a>
-                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-blue-600 rounded-full text-white hover:bg-blue-700 transition-colors">
+                    <a href="https://facebook.com/pkentertainmentnepal" target="_blank" rel="noopener noreferrer" className="p-2 bg-blue-600 rounded-full text-white hover:bg-blue-700 transition-colors">
                       <Facebook className="h-5 w-5" />
                     </a>
-                    <a href="https://t.me/+9779846920259" target="_blank" rel="noopener noreferrer" className="p-2 bg-blue-400 rounded-full text-white hover:bg-blue-500 transition-colors">
-                      <MessageSquare className="h-5 w-5" />
+                    <a href="mailto:8008698@gmail.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-red-600 rounded-full text-white hover:bg-red-700 transition-colors">
+                      <Mail className="h-5 w-5" />
                     </a>
                   </div>
                 </div>

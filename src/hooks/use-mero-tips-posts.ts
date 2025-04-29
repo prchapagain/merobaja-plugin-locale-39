@@ -76,9 +76,35 @@ export const useMeroTipsPosts = () => {
   return useQuery({
     queryKey: ['meroTipsPosts'],
     queryFn: async () => {
-      // Instead of fetching from an external API, return our mock data
-      // This ensures we always have blog posts to display
-      return mockBlogPosts;
+      try {
+        // Attempt to fetch from MeroTips.com
+        const response = await fetch('https://merotips.com/wp-json/wp/v2/posts?_embed&per_page=10');
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch from MeroTips');
+        }
+        
+        const wpPosts = await response.json();
+        
+        // Transform WordPress posts to our BlogPost format
+        const posts: BlogPost[] = wpPosts.map((post: any) => ({
+          id: post.id.toString(),
+          title: post.title.rendered,
+          excerpt: post.excerpt.rendered.replace(/<[^>]*>/g, '').substring(0, 150) + '...',
+          author: post._embedded?.author?.[0]?.name || 'MeroTips Author',
+          date: post.date,
+          readTime: `${Math.ceil(post.content.rendered.length / 2000)} min`,
+          image: post._embedded?.['wp:featuredmedia']?.[0]?.source_url || 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80',
+          category: post._embedded?.['wp:term']?.[0]?.[0]?.name || 'Blog',
+          url: post.link
+        }));
+        
+        return posts;
+      } catch (error) {
+        console.error('Error fetching from MeroTips:', error);
+        // Return mock data as fallback
+        return mockBlogPosts;
+      }
     },
     staleTime: 1000 * 60 * 5, // 5 minutes
   });

@@ -25,7 +25,7 @@ const YoutubeSection: React.FC = () => {
         <div className="aspect-w-16 aspect-h-9 shadow-2xl rounded-2xl overflow-hidden">
           <iframe 
             className="w-full h-[500px] rounded-xl border border-gray-200 dark:border-gray-700"
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&loop=1&playlist=dQw4w9WgXcQ"
+            src="https://www.youtube.com/embed?listType=user_uploads&list=UC2WaEDHGQIiaR8Sh93Y5-Bg"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen>

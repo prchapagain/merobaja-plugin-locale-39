@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from '@/utils/i18n';
 import { Youtube, Newspaper } from 'lucide-react';
+import { Facebook, Instagram, Mail, Phone } from 'lucide-react';
 
 const Footer: React.FC = () => {
   const { t } = useTranslation();
@@ -20,7 +21,7 @@ const Footer: React.FC = () => {
           </div>
           
           <div>
-            <h3 className="text-xl font-bold mb-4">Links</h3>
+            <h3 className="text-xl font-bold mb-4">{t('footer.links')}</h3>
             <ul className="space-y-2">
               <li>
                 <Link to="/" className="text-gray-300 hover:text-white transition-colors">
@@ -56,7 +57,7 @@ const Footer: React.FC = () => {
           </div>
           
           <div>
-            <h3 className="text-xl font-bold mb-4">Blog</h3>
+            <h3 className="text-xl font-bold mb-4">{t('nav.blog')}</h3>
             <ul className="space-y-2">
               <li>
                 <a href="https://merotips.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors flex items-center">
@@ -83,18 +84,25 @@ const Footer: React.FC = () => {
           </div>
           
           <div>
-            <h3 className="text-xl font-bold mb-4">Contact</h3>
+            <h3 className="text-xl font-bold mb-4">{t('footer.contact')}</h3>
             <address className="not-italic text-gray-300">
               <p>Kathmandu, Nepal</p>
-              <p>Email: info@merobaja.com</p>
-              <p>Phone: +977 9812345678</p>
+              <p>Email: 8008698@gmail.com</p>
+              <p>Phone: +9779817417650</p>
+              <p>Alternative: +9779846920259</p>
             </address>
             <div className="mt-4 flex space-x-4">
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">
+              <a href="https://www.youtube.com/channel/UC2WaEDHGQIiaR8Sh93Y5-Bg" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">
                 <Youtube className="h-5 w-5" />
               </a>
-              <a href="https://merotips.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">
-                <Newspaper className="h-5 w-5" />
+              <a href="https://facebook.com/pkentertainmentnepal" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">
+                <Facebook className="h-5 w-5" />
+              </a>
+              <a href="https://www.instagram.com/prchapagain_" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">
+                <Instagram className="h-5 w-5" />
+              </a>
+              <a href="mailto:8008698@gmail.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">
+                <Mail className="h-5 w-5" />
               </a>
             </div>
           </div>

@@ -52,28 +52,28 @@ const Navbar: React.FC = () => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-4 lg:space-x-6">
           <Link to="/" className="text-sm font-medium hover:text-primary">
-            {t('nav.home')}
+            Home
           </Link>
           <Link to="/#featured" className="text-sm font-medium hover:text-primary">
-            {t('nav.featured')}
+            Featured
           </Link>
           <Link to="/#plugins" className="text-sm font-medium hover:text-primary">
-            {t('nav.plugins')}
+            Plugins
           </Link>
           <Link to="/#testimonials" className="text-sm font-medium hover:text-primary">
-            {t('testimonials.title')}
+            Testimonials
           </Link>
           <Link to="/#youtube" className="text-sm font-medium hover:text-primary">
-            {t('nav.youtube')}
+            YouTube
           </Link>
           <Link to="/#payment" className="text-sm font-medium hover:text-primary">
-            {t('payment.title')}
+            Payment
           </Link>
           <Link to="/blog" className="text-sm font-medium hover:text-primary">
-            {t('nav.blog')}
+            Blog
           </Link>
           <Link to="/about" className="text-sm font-medium hover:text-primary">
-            {t('nav.about')}
+            About
           </Link>
         </nav>
         
@@ -103,56 +103,56 @@ const Navbar: React.FC = () => {
               className="text-sm font-medium hover:text-primary"
               onClick={closeMenu}
             >
-              {t('nav.home')}
+              Home
             </Link>
             <Link 
               to="/#featured" 
               className="text-sm font-medium hover:text-primary"
               onClick={closeMenu}
             >
-              {t('nav.featured')}
+              Featured
             </Link>
             <Link 
               to="/#plugins" 
               className="text-sm font-medium hover:text-primary"
               onClick={closeMenu}
             >
-              {t('nav.plugins')}
+              Plugins
             </Link>
             <Link 
               to="/#testimonials" 
               className="text-sm font-medium hover:text-primary"
               onClick={closeMenu}
             >
-              {t('testimonials.title')}
+              Testimonials
             </Link>
             <Link 
               to="/#youtube" 
               className="text-sm font-medium hover:text-primary"
               onClick={closeMenu}
             >
-              {t('nav.youtube')}
+              YouTube
             </Link>
             <Link 
               to="/#payment" 
               className="text-sm font-medium hover:text-primary"
               onClick={closeMenu}
             >
-              {t('payment.title')}
+              Payment
             </Link>
             <Link 
               to="/blog" 
               className="text-sm font-medium hover:text-primary"
               onClick={closeMenu}
             >
-              {t('nav.blog')}
+              Blog
             </Link>
             <Link 
               to="/about" 
               className="text-sm font-medium hover:text-primary"
               onClick={closeMenu}
             >
-              {t('nav.about')}
+              About
             </Link>
           </nav>
         </div>
