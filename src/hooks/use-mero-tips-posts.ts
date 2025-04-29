@@ -37,39 +37,6 @@ const mockBlogPosts: BlogPost[] = [
     category: 'Film Scoring',
     url: 'https://merotips.com/nepali-film-scores'
   },
-  {
-    id: '4',
-    title: 'Mixing and Mastering with Nepali Instruments',
-    excerpt: 'Professional mixing and mastering tips for traditional Nepali instruments. Learn how to balance these unique sounds in your mix.',
-    author: 'Bikram Prajapati',
-    date: '2024-03-28',
-    readTime: '7 min',
-    image: 'https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?auto=format&fit=crop&w=800&q=80',
-    category: 'Mixing',
-    url: 'https://merotips.com/mixing-nepali-instruments'
-  },
-  {
-    id: '5',
-    title: 'Best DAWs for Nepali Music Production',
-    excerpt: 'Compare different Digital Audio Workstations for producing Nepali music. Find out which DAW works best with our VST plugins.',
-    author: 'Anish Sharma',
-    date: '2024-03-20',
-    readTime: '6 min',
-    image: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=800&q=80',
-    category: 'Gear',
-    url: 'https://merotips.com/best-daws-nepali-music'
-  },
-  {
-    id: '6',
-    title: 'Sampling Techniques for Nepali Instruments',
-    excerpt: 'Learn advanced sampling techniques specifically tailored for Nepali traditional instruments. Create your own unique sample library.',
-    author: 'Rajesh Hamal',
-    date: '2024-03-15',
-    readTime: '9 min',
-    image: 'https://images.unsplash.com/photo-1507838153414-b4b713384a76?auto=format&fit=crop&w=800&q=80',
-    category: 'Sampling',
-    url: 'https://merotips.com/sampling-nepali-instruments'
-  },
 ];
 
 export const useMeroTipsPosts = () => {
@@ -77,8 +44,16 @@ export const useMeroTipsPosts = () => {
     queryKey: ['meroTipsPosts'],
     queryFn: async () => {
       try {
-        // Attempt to fetch from MeroTips.com
-        const response = await fetch('https://merotips.com/wp-json/wp/v2/posts?_embed&per_page=10');
+        // Create a proxy URL to avoid CORS issues
+        const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+        const targetUrl = 'https://merotips.com/wp-json/wp/v2/posts?_embed&per_page=10';
+        
+        // Try to fetch from the proxy
+        const response = await fetch(proxyUrl + targetUrl, {
+          headers: {
+            'Origin': window.location.origin
+          }
+        });
         
         if (!response.ok) {
           throw new Error('Failed to fetch from MeroTips');

@@ -6,8 +6,9 @@ import { BlogHeader } from '@/components/blog/BlogHeader';
 import { BlogPostCard } from '@/components/blog/BlogPostCard';
 import { useMeroTipsPosts } from '@/hooks/use-mero-tips-posts';
 import { Button } from '@/components/ui/button';
-import { RefreshCw } from 'lucide-react';
+import { RefreshCw, ExternalLink } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { Skeleton } from '@/components/ui/skeleton';
 
 const Blog = () => {
   const { toast } = useToast();
@@ -50,7 +51,17 @@ const Blog = () => {
       <main className="flex-grow py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <BlogHeader />
         
-        <div className="flex justify-end mb-6">
+        <div className="flex justify-between items-center mb-6">
+          <a 
+            href="https://merotips.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-nepali-red hover:text-red-700 transition-colors flex items-center gap-2"
+          >
+            <ExternalLink className="h-4 w-4" />
+            Visit MeroTips.com directly
+          </a>
+          
           <Button 
             variant="outline" 
             size="sm" 
@@ -63,13 +74,26 @@ const Blog = () => {
           </Button>
         </div>
         
-        {isLoading && (
-          <div className="flex justify-center items-center py-20">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-nepali-red"></div>
+        {(isLoading || isRefetching) && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+            {[1, 2, 3, 4, 5, 6].map(i => (
+              <div key={i} className="border rounded-lg overflow-hidden">
+                <Skeleton className="h-48 w-full" />
+                <div className="p-4">
+                  <Skeleton className="h-6 w-3/4 mb-2" />
+                  <Skeleton className="h-4 w-1/4 mb-4" />
+                  <Skeleton className="h-20 w-full mb-4" />
+                  <div className="flex justify-between">
+                    <Skeleton className="h-4 w-1/3" />
+                    <Skeleton className="h-4 w-1/4" />
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         )}
         
-        {error && (
+        {error && !isLoading && !isRefetching && (
           <div className="text-center py-20">
             <h3 className="text-xl text-red-600 font-semibold">Unable to load blog posts</h3>
             <p className="mt-2 text-gray-600 dark:text-gray-300">
@@ -86,7 +110,7 @@ const Blog = () => {
           </div>
         )}
         
-        {posts && posts.length > 0 && (
+        {posts && posts.length > 0 && !isRefetching && !isLoading && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
             {posts.map(post => (
               <BlogPostCard key={post.id} post={post} formatDate={formatDate} />
@@ -94,10 +118,17 @@ const Blog = () => {
           </div>
         )}
         
-        {posts && posts.length === 0 && !isLoading && !error && (
+        {posts && posts.length === 0 && !isLoading && !isRefetching && !error && (
           <div className="text-center py-20">
             <h3 className="text-xl font-semibold">No blog posts found</h3>
-            <p className="mt-2 text-gray-600 dark:text-gray-300">Check back later for new content</p>
+            <p className="mt-2 text-gray-600 dark:text-gray-300">Check MeroTips.com for new content</p>
+            <Button 
+              variant="default" 
+              className="mt-4"
+              onClick={() => window.open('https://merotips.com', '_blank')}
+            >
+              Visit MeroTips.com
+            </Button>
           </div>
         )}
       </main>
