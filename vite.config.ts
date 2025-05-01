@@ -20,6 +20,6 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  // Make sure base is set to './' for GitHub Pages
+  // Setting base path for GitHub Pages deployment
   base: "./",
 }));
