@@ -20,8 +20,8 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  // Setting base path for GitHub Pages deployment
-  base: "./",
+  // Setting base path for subdirectory GitHub Pages deployment
+  base: "/merobaja-plugin-locale-39/",
   build: {
     // Output directory - this should match your GitHub Pages deployment settings
     outDir: "dist",
