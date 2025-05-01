@@ -22,4 +22,10 @@ export default defineConfig(({ mode }) => ({
   },
   // Setting base path for GitHub Pages deployment
   base: "./",
+  build: {
+    // Output directory - this should match your GitHub Pages deployment settings
+    outDir: "dist",
+    // Generate sourcemaps for better debugging
+    sourcemap: true,
+  }
 }));
