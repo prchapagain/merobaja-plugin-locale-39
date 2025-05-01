@@ -6,7 +6,7 @@ import { useTranslation } from '@/utils/i18n';
 import { Download, ShoppingCart } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
-import { Facebook, MessageSquare, Phone, CreditCard, BanknoteIcon } from 'lucide-react';
+import { Facebook, MessageSquare, Phone } from 'lucide-react';
 
 export interface Plugin {
   id: number;
@@ -32,8 +32,8 @@ const PluginCard: React.FC<PluginCardProps> = ({ plugin }) => {
     toast({
       title: language === 'en' ? "Payment Successful" : "भुक्तानी सफल भयो",
       description: language === 'en' ? 
-        "Please contact us on WhatsApp for download instructions." : 
-        "डाउनलोड निर्देशनहरूको लागि कृपया हामीलाई व्हाट्सएपमा सम्पर्क गर्नुहोस्।",
+        "Payment or download को लागि WhatsApp अथवा यी माध्यम बाट हामीलाई सम्पर्क गर्नुहोस्" : 
+        "भुक्तानी वा डाउनलोड को लागि WhatsApp अथवा यी माध्यम बाट हामीलाई सम्पर्क गर्नुहोस्",
     });
   };
 
@@ -75,16 +75,11 @@ const PluginCard: React.FC<PluginCardProps> = ({ plugin }) => {
                 <DialogTitle>{language === 'en' ? "Free Download" : "नि:शुल्क डाउनलोड"}</DialogTitle>
                 <DialogDescription>
                   {language === 'en' ? 
-                    "Contact us on WhatsApp to receive your free download" : 
-                    "नि:शुल्क डाउनलोड प्राप्त गर्न हामीलाई व्हाट्सएपमा सम्पर्क गर्नुहोस्"}
+                    "Payment or download को लागि WhatsApp अथवा यी माध्यम बाट हामीलाई सम्पर्क गर्नुहोस्" : 
+                    "भुक्तानी वा डाउनलोड को लागि WhatsApp अथवा यी माध्यम बाट हामीलाई सम्पर्क गर्नुहोस्"}
                 </DialogDescription>
               </DialogHeader>
               <div className="py-4 flex flex-col items-center">
-                <p className="mb-4 text-center">
-                  {language === 'en' ? 
-                    "Thank you for choosing our free plugin! Contact us to receive your download link." : 
-                    "हाम्रो नि:शुल्क प्लगइन चयन गर्नुभएकोमा धन्यवाद! डाउनलोड लिंक प्राप्त गर्न हामीलाई सम्पर्क गर्नुहोस्।"}
-                </p>
                 <div className="flex gap-4 justify-center">
                   <a href="https://wa.me/9779846920259" target="_blank" rel="noopener noreferrer" className="p-2 bg-green-600 rounded-full text-white hover:bg-green-700 transition-colors">
                     <Phone className="h-6 w-6" />
@@ -110,80 +105,12 @@ const PluginCard: React.FC<PluginCardProps> = ({ plugin }) => {
               <DialogHeader>
                 <DialogTitle>{t('payment.title')}</DialogTitle>
                 <DialogDescription>
-                  {t('payment.choose')}
+                  {language === 'en' ? 
+                    "Payment or download को लागि WhatsApp अथवा यी माध्यम बाट हामीलाई सम्पर्क गर्नुहोस्" : 
+                    "भुक्तानी वा डाउनलोड को लागि WhatsApp अथवा यी माध्यम बाट हामीलाई सम्पर्क गर्नुहोस्"}
                 </DialogDescription>
               </DialogHeader>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 py-4">
-                {/* eSewa Payment Option */}
-                <div onClick={handlePaymentSuccess} className="flex flex-col items-center p-3 border rounded-lg hover:bg-[#60BB46]/10 cursor-pointer transition-colors dark:border-gray-700 dark:hover:bg-[#60BB46]/5">
-                  <div className="w-16 h-16 border-2 border-[#60BB46] p-2 rounded-lg mb-2">
-                    <img 
-                      src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
-                      alt="eSewa QR Code" 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <p className="font-bold text-[#60BB46] text-xs">{t('payment.esewa')}</p>
-                </div>
-                
-                {/* PhonePay QR */}
-                <div onClick={handlePaymentSuccess} className="flex flex-col items-center p-3 border rounded-lg hover:bg-[#5F259F]/10 cursor-pointer transition-colors dark:border-gray-700 dark:hover:bg-[#5F259F]/5">
-                  <div className="w-16 h-16 border-2 border-[#5F259F] p-2 rounded-lg mb-2">
-                    <img 
-                      src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
-                      alt="PhonePay QR Code" 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <p className="font-bold text-[#5F259F] text-xs">{t('payment.phonepay')}</p>
-                </div>
-                
-                {/* Khalti */}
-                <div onClick={handlePaymentSuccess} className="flex flex-col items-center p-3 border rounded-lg hover:bg-[#5C2D91]/10 cursor-pointer transition-colors dark:border-gray-700 dark:hover:bg-[#5C2D91]/5">
-                  <div className="w-16 h-16 border-2 border-[#5C2D91] p-2 rounded-lg mb-2">
-                    <img 
-                      src="https://images.unsplash.com/photo-1556742031-c6961e8560b0?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
-                      alt="Khalti QR Code" 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <p className="font-bold text-[#5C2D91] text-xs">{t('payment.khalti')}</p>
-                </div>
-
-                {/* Bank Transfer */}
-                <div onClick={handlePaymentSuccess} className="flex flex-col items-center p-3 border rounded-lg hover:bg-blue-100/50 cursor-pointer transition-colors dark:border-gray-700 dark:hover:bg-blue-900/20">
-                  <div className="w-16 h-16 border-2 border-blue-500 p-2 rounded-lg mb-2 flex items-center justify-center">
-                    <CreditCard className="h-8 w-8 text-blue-500" />
-                  </div>
-                  <p className="font-bold text-blue-500 text-xs">{t('payment.bank')}</p>
-                </div>
-
-                {/* IME Pay */}
-                <div onClick={handlePaymentSuccess} className="flex flex-col items-center p-3 border rounded-lg hover:bg-[#E11B22]/10 cursor-pointer transition-colors dark:border-gray-700 dark:hover:bg-[#E11B22]/5">
-                  <div className="w-16 h-16 border-2 border-[#E11B22] p-2 rounded-lg mb-2">
-                    <img 
-                      src="https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
-                      alt="IME Pay QR Code" 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <p className="font-bold text-[#E11B22] text-xs">{t('payment.imepay')}</p>
-                </div>
-
-                {/* PayPal */}
-                <div onClick={handlePaymentSuccess} className="flex flex-col items-center p-3 border rounded-lg hover:bg-[#003087]/10 cursor-pointer transition-colors dark:border-gray-700 dark:hover:bg-[#003087]/5">
-                  <div className="w-16 h-16 border-2 border-[#003087] p-2 rounded-lg mb-2 flex items-center justify-center">
-                    <BanknoteIcon className="h-8 w-8 text-[#003087]" />
-                  </div>
-                  <p className="font-bold text-[#003087] text-xs">{t('payment.paypal')}</p>
-                </div>
-              </div>
               <div className="mt-4 flex flex-col items-center">
-                <p className="text-sm text-center mb-3">
-                  {language === 'en' ? 
-                    "After payment, contact us for download instructions" : 
-                    "भुक्तानी पछि, डाउनलोड निर्देशनहरूको लागि हामीलाई सम्पर्क गर्नुहोस्"}
-                </p>
                 <div className="flex gap-4 justify-center">
                   <a href="https://wa.me/9779846920259" target="_blank" rel="noopener noreferrer" className="p-2 bg-green-600 rounded-full text-white hover:bg-green-700 transition-colors">
                     <Phone className="h-5 w-5" />
