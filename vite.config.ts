@@ -20,6 +20,6 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  // Update base configuration for GitHub Pages to match your deployment path
-  base: "/merobaja-plugin-locale-39/",
+  // Use relative base for GitHub Pages compatibility
+  base: "./",
 }));
